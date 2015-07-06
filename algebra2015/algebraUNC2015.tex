@@ -97,38 +97,32 @@ Go Tar Heels!
 \newpage
 
 \section{Vector Spaces}
-A set $V$ is a \textbf{vector space} over $\mathbb{R}$, and its elements
+A set $V$ is a \textbf{vector space} over $\mathbb{R}$ (field), and its elements
 are called \textbf{vectors}, if there are 2 operations defined on it:
 \begin{enumerate}
 \item Vector addition, that assigns to each pair of vectors $v_{1},
   v_{2} \in V$ another vector $w \in V$ (we write $v_{1} + v_{2} = w$)
 \item Scalar multiplication, that assigns to each vector $v \in V$ and
-  each scalar $r \in \mathbb{R}$ another vector $w \in V$ (we write $r v
+  each scalar $r \in \mathbb{R}$ (field) another vector $w \in V$ (we write $r v
   = w$)
 \end{enumerate}
 that satisfy the following 8 conditions $\forall$ $ v_{1}, v_{2}, v_{3}
-\in V$ and $\forall$ $r_{1}, r_{2} \in \mathbb{R}$:
+\in V$ and $\forall$ $r_{1}, r_{2} \in \mathbb{R}$ (filed):
 \begin{enumerate}
 \item Commutativity of vector addition: $v_{1} + v_{2}$ $= v_{2} + v_{1}$
 \item Associativity of vector addition: $(v_{1} + v_{2}) + v_{3}$ $= v_{1} + (v_{2} + v_{3})$
 \item Identity element of vector addition: $\exists$ vector $0 \in V$, s.t. $v + 0 = v$,  $\forall$ $v \in V$
 \item Inverse elements of vector addition: $\forall$ $v \in V$ $\exists$ $-v = w \in V$ s.t. $v + w = 0$
-\item Compatibility of scalar multiplication with field multiplication: $r_{1}(r_{2} v)$ $= (r_{1} r_{2})v$,  $\forall$ $v \in V$
-\item Distributivity of scalar multiplication with respect to field addition: $(r_{1} + r_{2})v$ $= r_{1} v + r_{2} v$,  $\forall$ $v \in V$
+\item Compatibility of scalar multiplication with (field) multiplication: $r_{1}(r_{2} v)$ $= (r_{1} r_{2})v$,  $\forall$ $v \in V$
+\item Distributivity of scalar multiplication with respect to (field) addition: $(r_{1} + r_{2})v$ $= r_{1} v + r_{2} v$,  $\forall$ $v \in V$
 \item Distributivity of scalar multiplication with respect to vector addition: $r (v_{1} + v_{2})$ $= r v_{1} + r v_{2}$,  $\forall$ $r \in
   \mathbb{R}$
 \item Identity element of scalar multiplication: $1 v$ $= v$,  $\forall$ $v \in V$
 \end{enumerate}
 
-Vector spaces over fields other than $\mathbb{R}$ are defined
-similarly, with the multiplicative identity of the field replacing 1. We won't concern ourselves with those spaces,
-except for when we'll be needing complex numbers later on. Also, we'll
-be using the symbol $0$ to designate both the number $0$ and the vector $0$ in
-V, and you should always be able to tell the difference from the
-context. Sometimes, we'll emphasize that we're dealing with, say, $n
-\times 1$ vector $0$ by writing $0_{n \times 1}$.\\
+Vector spaces over fields other than $\mathbb{R}$ are defined similarly, with the multiplicative identity of the field replacing 1. We won't concern ourselves with those spaces, except for when we'll be needing complex numbers later on. Also, we'll be using the symbol $0$ to designate both the number $0$ and the vector $0$ in $V$, and you should always be able to tell the difference from the context. Sometimes, we'll emphasize that we're dealing with, say, $n \times 1$ vector $0$ by writing $0_{n \times 1}$. 
 
-\noindent Examples:
+Vector space is an elementary object considered in the linear algebra. Here are some concrete examples:
 \begin{enumerate}
 \item Vector space ${\mathbb{R}}^{n}$ with usual operations of
   element-wise addition and scalar multiplication. An example of these
