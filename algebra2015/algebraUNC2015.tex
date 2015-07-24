@@ -155,6 +155,7 @@ Vector space is an elementary object considered in the linear algebra. Here are 
 
 
 \subsection{Basic Concepts}
+\paragraph{Subspace and span} 
 We say that $S \subset V$ is a \textbf{subspace} of $V$, if $S$ is
 closed under vector addition and scalar multiplication, i.e.
 \begin{enumerate}
@@ -195,6 +196,7 @@ we have span\((S)=V\), then we say \(S\) \textbf{spans} $V$.\\
 combination of (finitely many) elements of $S$ also belongs to $S$. \\
   \end{enumerate}
 
+\paragraph{Linear independence and dependence} 
 Given vectors $v_{1}, v_{2}, \ldots, v_{n} \in V$ we say that $v_{1},
 v_{2}, \ldots, v_{n}$ are \textbf{linearly independent} if $r_{1}
 v_{1} + r_{2} v_{2} + \ldots + r_{n} v_{n} = 0$ $\Longrightarrow$
@@ -221,6 +223,7 @@ Consider now the following algorithm. Select \( x \in I, x\notin S\). By the the
 Now note that the above algorithm must terminate in at most \(m < \infty \) steps. To see this, first note that after the \(m^{\text{\tiny th}} \) iteration \( S \subset I' \). Next, if the algorithm does not terminate at this iteration \( I' \not\subset S \), and there would exist a \(x \in I', x \notin S \). But then since \( S \) spans \(V\) there would exist \(v_1,v_2\dots,v_n \in S \subset I'\) and \(r_1,r_2,\dots,r_n \in \mathbb{R} \) such that \(0=x-\sum_{i=1}^n r_iv_i \) contradicting \(I'\) linearly independent. $\Box$\\
 
 
+\paragraph{Basis and dimension}
 Now suppose that $v_{1}, v_{2}, \ldots, v_{n}$ span $V$ and that,
 moreover, they are linearly independent. Then we say that the set $\{
 v_{1}, v_{2}, \ldots, v_{n} \}$ is a \textbf{basis} for $V$.\\
@@ -231,7 +234,6 @@ $V$. Then $|S| = |T|$.\\
 
 \textbf{Proof}: This follows directly from the above Corollary since \(S\) and \(T\) are both linearly independent, and both span \(V\). $\Box$
 \\
-
 
 
 We call the unique number of vectors in a basis for $V$ the
@@ -274,17 +276,18 @@ We call the unique number of vectors in a basis for $V$ the
 \end{enumerate}
 
 \subsection{Special Spaces}
+\paragraph{Inner product space}
 An \textbf{inner product} is a function $f: V \times V \rightarrow \mathbb{R}$
-(which we denote by $f(v_{1}, v_{2})$ $= <v_{1}, v_{2}>$),
+(which we denote by $f(v_{1}, v_{2})$ $= \langle v_{1}, v_{2} \rangle$),
 s.t. $\forall$ $v, w, z \in V$, and $\forall r \in \mathbb{R}$:
 \begin{enumerate}
-\item $<v, w + r z>$ $= <v, w> + r <v, z>$ (linearity)
-\item $<v, w> = <w, v>$ (symmetry)
-\item $<v, v> \geq 0$ and $<v, v> = 0$ iff $v = 0$ (positive-definiteness)
+\item $\langle v, w + r z \rangle$ $= \langle v, w \rangle + r \langle v, z \rangle$ (linearity)
+\item $\langle v, w \rangle = \langle w, v \rangle$ (symmetry)
+\item $\langle v, v \rangle \geq 0$ and $\langle v, v \rangle = 0$ iff $v = 0$ (positive-definiteness)
 \end{enumerate}
 We note here that not all vector spaces have inner products defined on
 them.
-We call the spaces where the inner products are defined the \textbf{inner product space}.\\
+We call the vector spaces where the inner products are defined the \textbf{inner product space}.\\
 
 \noindent Examples:
 \begin{enumerate}
@@ -292,38 +295,46 @@ We call the spaces where the inner products are defined the \textbf{inner produc
       \vdots \\ x_{n} \end{array} \right]$ and $y =$ $\left[
       \begin{array} {c} y_{1} \\ y_{2} \\ \vdots \\ y_{n} \end{array}
       \right]$ in ${\mathbb{R}}^{n}$, we define their inner product
-      $x'y$ $= <x, y>$ $= \displaystyle\sum_{i=1}^{n} {x_{i}
+      $x'y$ $= \langle x, y \rangle$ $= \displaystyle\sum_{i=1}^{n} {x_{i}
       y_{i}}$. You can check yourself that the 3 properties above are
       satisfied, and the meaning of notation $x' y$ will become clear
       from the next section.
-\item Given $f, g \in C_{[-1, 1]}$, we define $<f, g> =$ $\int_{-1}^{1}
+\item Given $f, g \in C_{[-1, 1]}$, we define $\langle f, g \rangle =$ $\int_{-1}^{1}
   {f(x) g(x) dx}$. Once again, verification that this is indeed an
   inner product is left as an exercise.
 \end{enumerate}
 
-\textbf{Cauchy-Schwarz Inequality}: for $v$ and $w$ elements of $V$, the following inequality holds:
+
+\noindent \textbf{Cauchy-Schwarz Inequality}: for $v$ and $w$ elements of $V$, the following inequality holds:
 \[
-<v,w>^2\leq <v,v>\cdot<w,w>
+\langle v,w \rangle^2\leq \langle v,v \rangle \cdot \langle w,w \rangle
 \]
 with equality if and only if $v$ and $w$ are linearly dependent.
 
-\textbf{Proof}: Note that $<v,0> = -<v,-0>= -<v,0> \;\Rightarrow\; <v,0>=0,\forall v\in V.$\\
-If $w=0$, the equality obviously holds.\\
-If $w\neq0$, let $\lambda={<v,w>\over <w,w>}$. Since
+\textbf{Proof}: Note that $\langle v,0 \rangle= -\langle v,-0 \rangle= -\langle v,0 \rangle \;\Rightarrow\; \langle v,0 \rangle=0,\forall v \in V.$
+
+If $w=0$, the equality obviously holds.
+
+If $w\neq0$, let $\lambda={\langle v,w \rangle \over \langle w,w \rangle}$. Since
 \[
-0\leq <v-\lambda w,v-\lambda w>=<v,v>-2\lambda<v,w>+\lambda^2<w,w>=<v,v>-{<v,w>^2\over <w,w>}
-\]
-we can show the result with equality if and only if $v=\lambda w$.
+\begin{aligned}
+0 &\leq \langle v - \lambda w, v - \lambda w \rangle \\
+  &= \langle v,v \rangle - 2\lambda \langle v, w \rangle +\lambda^2 \langle w, w \rangle \\
+  &= \langle v,v \rangle - \frac{\langle v,w \rangle^2 }{\langle w,w \rangle}
+\end{aligned}
+\] $\Box$\\
+
+\noindent  we can show the result with equality if and only if $v=\lambda w$.
 Namely, the inequality holds and it's equality if and only if $v$ and $w$ are linearly dependent.
 
 With Cauchy-Schwarz inequality, we can define the \textbf{angle} between two nonzero vectors $v$ and $w$ as:
 \[
-angle(v,w)=\arccos{<v,w>\over\sqrt{<v,v>\cdot<w,w>}}
+angle(v,w)=\arccos{ \frac {\langle v,w \rangle } {\sqrt{ \langle v,v \rangle \cdot \langle w,w \rangle}} }
 \]
-The angle is in $[0,\pi)$.
-This generates nice geometry for the inner product space.
 
+The angle is in $[0,\pi)$. This generates nice geometry for the inner product space.
 
+\paragraph{Normed space}
 The \textbf{norm}, or \textbf{length}, of a vector $v$ in the vector space $V$ is
  a function $g: V \rightarrow \mathbb{R}$ (which we denote by $g(v)= \|v\|$),
 s.t. $\forall$ $v, w\in V$, and $\forall r \in \mathbb{R}$:
@@ -343,11 +354,11 @@ vector $x$ = $\|x\| = $ $\sqrt{x_{1}^2 + x_{2}^2 + \ldots + x_{n}^2}$ $=
 \sqrt{x'x}$, or $\|x\|^2$ $= x'x$. This is called the Euclidian norm, or the $L_2$ norm (denote by $\|x\|_2$). (verify it by yourself)
 \item Again in ${\mathbb{R}}^n$, if we define $\|x\|=|x_1|+\ldots+|x_n|$, it's also a norm called the $L_1$ norm (denote by $\|x\|_1$). (verify it by yourself)
 \item Given $f\in C_{[-1, 1]}$, we define $\|f\|_p=\left(\int_{-1}^1 |f(x)|^p dx \right)^{1\over p}$, which is also a norm. (see Minkowski Inequality)
-\item For any inner product space \( V\), \(\|x\|^2= <x,x> \) defines a norm.
+\item For any inner product space \( V\), \(\|x\|^2= \langle x,x \rangle \) defines a norm.
 \end{enumerate}
 
 In general, we can naturally obtain a norm from a well defined inner product space.
-Let $\|v\|=\sqrt{<v,v>}$ for $\forall v\in V$, where $<\cdot,\cdot>$ is the inner product on the space $V$.
+Let $\|v\|=\sqrt{\langle v,v \rangle}$ for $\forall v\in V$, where $\langle \cdot,\cdot \rangle$ is the inner product on the space $V$.
 It's not hard to verify all the requirements in the definition of norm (verify it by yourself).
 Thus, for any defined inner product, there is a naturally derived norm.
 However, in most cases, the opposite (i.e. to obtain inner products from norms) is not obvious.
@@ -364,7 +375,7 @@ Please refer to the analysis material for more information.
 
 For any normed space, we can naturally derive a metric as $d(x,y)=\|x-y\|$. This metric is said to be induced by the norm $\|\cdot\|$. However, the opposite is not true. For example, assuming we define the discrete metric on the space $V$, where $d(x,y)=0$ if $x=y$ and $d(x,y)=1$ if $x\neq y$; it is not obvious what kind of norm should be defined in this space.
 If a metric $d$ on a vector space $V$ satisfies the properties:
-$\forall x, y\in V$ and $\forall r\in\mathbb{R}$,
+$\forall x, y\in V$ and $\forall r \in \mathbb{R}$,
 \begin{enumerate}
 \item $d(x,y) = d(x + r, y+r)$ (translation invariance)
 \item $d(rx, ry) = |r| d(x, y)$ (homogeneity)
@@ -378,7 +389,7 @@ if we have a norm in it, we can naturally derived a metric in it.
 The opposite is not true.
 
 \subsection{Orthogonality}
-We say that vectors $v, w$ in $V$ are \textbf{orthogonal} if $<v, w> =
+We say that vectors $v, w$ in $V$ are \textbf{orthogonal} if $ \langle v, w \rangle =
 0$, or equivalently, $angle(v,w)=\pi/2$. It is denoted as $v\perp w.$\\
 
 \noindent Examples:
@@ -390,20 +401,11 @@ We say that vectors $v, w$ in $V$ are \textbf{orthogonal} if $<v, w> =
 \begin{center}
 $x'x + y'y =$ $(x-y)'(x-y) =$ $x'x - y'x - x'y + y'y$ or $2 x'y = 0$
 \end{center}
-and thus $<x, y> = x'y = 0$.
-\item Nonzero orthogonal vectors are linearly independent. Suppose we
-  have $q_1, q_2, \ldots, q_n$, a set of nonzero mutually orthogonal
-  ($<q_i, q_j> = 0$ $\forall i \neq j$) vectors in $V$, and suppose
-  that $r_1 q_1 + r_2 q_2 + \ldots + r_n q_n = 0$. Then taking inner
-  product of $q_1$ with both sides, we have $r_1 <q_1, q_1> + r_2
-  <q_1, q_2> + \ldots + r_n <q_1 q_n> = <q_1, 0> = 0$.  That reduces
-  to $r_1 \|q_1\|^2 = 0$ and since $q_1 \neq 0$, we conclude that $r_1 =
-  0$. Similarly, $r_i = 0$ $\forall$ $1 \leq i \leq n$, and we
-  conclude that $q_1, q_2, \ldots, q_n$ are linearly independent.
+and thus $ \langle x, y \rangle = x'y = 0$.
+\item Nonzero orthogonal vectors are linearly independent. Suppose we have $q_1, q_2, \ldots, q_n$, a set of nonzero mutually orthogonal ($ \langle q_i, q_j \rangle = 0$ $\forall i \neq j$) vectors in $V$, and suppose that $r_1 q_1 + r_2 q_2 + \ldots + r_n q_n = 0$. Then taking inner product of $q_1$ with both sides, we have $r_1 \langle q_1, q_1 \rangle + r_2 \langle q_1, q_2 \rangle + \ldots + r_n \langle q_1 q_n\rangle = \langle q_1, 0 \rangle = 0$.  That reduces to $r_1 \|q_1\|^2 = 0$ and since $q_1 \neq 0$, we conclude that $r_1 = 0$. Similarly, $r_i = 0$ $\forall$ $1 \leq i \leq n$, and we conclude that $q_1, q_2, \ldots, q_n$ are linearly independent.
 \item Suppose we have a $n \times 1$ vector of observations $x =
   \left[ \begin{array} {c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array}
-  \right]$. Then if we let $\bar{x} = \frac{1}{n}
-  \displaystyle\sum_{i=1}^n {x_i}$, we can see that vector $e = \left[
+  \right]$. Then if we let $\bar{x} = \frac{1}{n} \displaystyle\sum_{i=1}^n {x_i}$, we can see that vector $e = \left[
   \begin{array} {c} x_1 - \bar{x} \\ x_2 - \bar{x} \\ \vdots \\ x_n -
   \bar{x} \end{array} \right]$ is orthogonal to vector $\hat{x} =
   \left[ \begin{array} {c} \bar{x} \\ \bar{x} \\ \vdots \\ \bar{x}
@@ -414,46 +416,15 @@ and thus $<x, y> = x'y = 0$.
 \end{enumerate}
 
 
-Suppose $S, T$ are subspaces of $V$. Then we say that they are
-\textbf{orthogonal subspaces} if every vector in $S$ is orthogonal to
-every vector in $T$. We say that $S$ is the \textbf{orthogonal
-  complement} of $T$ in $V$, if $S$ contains ALL vectors orthogonal to
-vectors in $T$ and we write $S = T^\perp$. For example, the x-axis and
-y-axis are orthogonal subspaces of ${\mathbb{R}}^3$, but they are not
-orthogonal complements of each other, since y-axis does not contain
-$\left[ \begin{array} {c}  0 \\ 0 \\ 1 \end{array} \right]$, which is
-perpendicular to every vector in x-axis. However, y-z plane and x-axis
-ARE orthogonal complements of each other in ${\mathbb{R}}^3$. You
-should prove as an exercise that if dim$(V)$ $= n$, and dim$(S)$ $=k$,
-then dim$(S^\perp)$ $= n-k$.
+Suppose $S, T$ are subspaces of $V$. Then we say that they are \textbf{orthogonal subspaces} if every vector in $S$ is orthogonal to every vector in $T$. We say that $S$ is the \textbf{orthogonal complement} of $T$ in $V$, if $S$ contains ALL vectors orthogonal to vectors in $T$ and we write $S = T^\perp$. For example, the x-axis and y-axis are orthogonal subspaces of ${\mathbb{R}}^3$, but they are not orthogonal complements of each other, since y-axis does not contain $\left[ \begin{array} {c}  0 \\ 0 \\ 1 \end{array} \right]$, which is
+perpendicular to every vector in x-axis. However, y-z plane and x-axis ARE orthogonal complements of each other in ${\mathbb{R}}^3$. You should prove as an exercise that if dim$(V)$ $= n$, and dim$(S)$ $=k$, then dim$(S^\perp)$ $= n-k$.
+
 \subsection{Gram-Schmidt Process}
-Suppose we're given linearly independent vectors $v_{1}, v_{2},
-\ldots, v_{n}$ in $V$, and there's an inner product defined on $V$. Then
-we know that $v_1, v_2, \ldots, v_n$ form a basis for the subspace
-which they span (why?).  Then, the \textbf{Gram-Schmidt process} can be used to construct an orthogonal basis for this subspace, as follows:
+Suppose we're given linearly independent vectors $v_{1}, v_{2}, \ldots, v_{n}$ in $V$, and there's an inner product defined on $V$. Then we know that $v_1, v_2, \ldots, v_n$ form a basis for the subspace which they span (why?).  Then, the \textbf{Gram-Schmidt process} can be used to construct an orthogonal basis for this subspace, as follows:
 
-Let $q_1 = v_1$ Suppose $v_2$ is not orthogonal
-to $v_1$. then let $r v_1$ be the \textbf{projection} of $v_2$ on
-$v_1$, i.e. we want to find $r \in \mathbb{R}$ s.t. $q_2 = v_2 - r
-q_1$ is orthogonal to $q_1$. Well, we should have $<q_1, (v_2 - r
-q_1)> = 0$, and we get $r = \frac{<q_1, v_2>}{<q_1, q_1>}$. Notice
-that the span of $q_1, q_2$ is the same as the span of $v_1, v_2$,
-since all we did was to subtract multiples of original vectors from
-other original vectors. Proceeding in similar fashion, we obtain $q_i = v_i -
-\left(\left(\frac{<q_1, v_i>}{<q_1, q_1>}\right) q_1 + \ldots +
-  \left(\frac{<q_{i-1}, v_{i}>}{<q_{i-1}, q_{i-1}>}\right)
-  q_{i-1}\right)$, and we thus end up with an orthogonal basis for the
-subspace. If we furthermore divide each of the resulting vectors $q_1,
-q_2, \ldots, q_n$ by its length, we are left with \textbf{orthonormal}
-basis, i.e. $<q_i, q_j> = 0$ $\forall i \neq j$ and $<q_i, q_i> = 1$
-$\forall i$ (why?). We call these vectors that have length 1
-\textbf{unit} vectors.
+Let $q_1 = v_1$ Suppose $v_2$ is not orthogonal to $v_1$. then let $r v_1$ be the \textbf{projection} of $v_2$ on $v_1$, i.e. we want to find $r \in \mathbb{R}$ s.t. $q_2 = v_2 - r q_1$ is orthogonal to $q_1$. Well, we should have $\langle q_1, (v_2 - r q_1) \rangle = 0$, and we get $r = \frac{\langle q_1, v_2 \rangle}{\langle q_1, q_1 \rangle}$. Notice that the span of $q_1, q_2$ is the same as the span of $v_1, v_2$, since all we did was to subtract multiples of original vectors from other original vectors. Proceeding in similar fashion, we obtain $q_i = v_i - \left(\left(\frac{\langle q_1, v_i \rangle}{\langle q_1, q_1 \rangle}\right) q_1 + \ldots + \left(\frac{\langle q_{i-1}, v_{i} \rangle}{\langle q_{i-1}, q_{i-1} \rangle}\right) q_{i-1}\right)$, and we thus end up with an orthogonal basis for the subspace. If we furthermore divide each of the resulting vectors $q_1, q_2, \ldots, q_n$ by its length, we are left with \textbf{orthonormal} basis, i.e. $\langle q_i, q_j \rangle = 0$ $\forall i \neq j$ and $\langle q_i, q_i \rangle = 1, \forall i$ (why?). We call these vectors that have length 1 \textbf{unit} vectors.
 
-You can now construct an orthonormal basis for the
-subspace of $F_{[-1, 1]}$ spanned by $f(x) = 1, g(x) = x$, and $h(x) =
-x^2$ (Exercise 2.6 (b)). An important point to take away is that given any basis for
-finite-dimensional $V$, if there's an inner product defined on $V$, we
-can always turn the given basis into an orthonormal basis.
+You can now construct an orthonormal basis for the subspace of $F_{[-1, 1]}$ spanned by $f(x) = 1, g(x) = x$, and $h(x) = x^2$ (Exercise 2.6 (b)). An important point to take away is that given any basis for finite-dimensional $V$, if there's an inner product defined on $V$, we can always turn the given basis into an orthonormal basis.
 
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
@@ -481,11 +452,11 @@ Let $v_1,v_2,...,v_n$ be a linearly independent set of vectors in $V$.  Prove th
 \end{exr}
 
 \begin{exr}{}
-If $F_{[-1,1]}$ is the space of all continuous functions defined on the interval $[-1,1]$,  show that $<f, g> = \int_{-1}^{1} {f(x) g(x) dx}$ defines an inner product of $F_{[-1,1]}$.
+If $F_{[-1,1]}$ is the space of all continuous functions defined on the interval $[-1,1]$,  show that $\langle f, g \rangle = \int_{-1}^{1} {f(x) g(x) dx}$ defines an inner product of $F_{[-1,1]}$.
 \end{exr}
 
 \begin{exr}{}
-Parts (a) and (b) concern the space $F_{[-1,1]}$, with inner product $<f,g> = \int_{-1}^1 f(x) g(x) dx$.
+Parts (a) and (b) concern the space $F_{[-1,1]}$, with inner product $\langle f,g \rangle = \int_{-1}^1 f(x) g(x) dx$.
 \begin{enumerate}[(a)]
 	\item Show that $f(x) = 1$ and $g(x) =  x$ are orthogonal in $F_{[-1, 1]}$
 	\item Construct an orthonormal basis for the
