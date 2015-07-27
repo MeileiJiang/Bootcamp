@@ -291,17 +291,8 @@ We call the vector spaces where the inner products are defined the \textbf{inner
 
 \noindent Examples:
 \begin{enumerate}
-\item Given 2 vectors $x =$ $\left[ \begin{array} {c} x_{1} \\ x_{2} \\
-      \vdots \\ x_{n} \end{array} \right]$ and $y =$ $\left[
-      \begin{array} {c} y_{1} \\ y_{2} \\ \vdots \\ y_{n} \end{array}
-      \right]$ in ${\mathbb{R}}^{n}$, we define their inner product
-      $x'y$ $= \langle x, y \rangle$ $= \displaystyle\sum_{i=1}^{n} {x_{i}
-      y_{i}}$. You can check yourself that the 3 properties above are
-      satisfied, and the meaning of notation $x' y$ will become clear
-      from the next section.
-\item Given $f, g \in C_{[-1, 1]}$, we define $\langle f, g \rangle =$ $\int_{-1}^{1}
-  {f(x) g(x) dx}$. Once again, verification that this is indeed an
-  inner product is left as an exercise.
+\item Given 2 vectors $x =$ $\left[ x_{1},  x_{2}, \cdots, x_{n} \right]'$ and $y =$ $\left[ y_{1} , y_{2} , \cdots , y_{n} \right]'$ in ${\mathbb{R}}^{n}$, we define their inner product $x'y$ $= \langle x, y \rangle$ $= \displaystyle\sum_{i=1}^{n} {x_{i} y_{i}}$. You can check yourself that the 3 properties above are satisfied, and the meaning of notation $x' y$ will become clear from the next section.
+\item Given $f, g \in C_{[-1, 1]}$, we define $\langle f, g \rangle =$ $\int_{-1}^{1} {f(x) g(x) dx}$. Once again, verification that this is indeed an inner product is left as an exercise.
 \end{enumerate}
 
 
@@ -344,34 +335,31 @@ s.t. $\forall$ $v, w\in V$, and $\forall r \in \mathbb{R}$:
 \item $\|v+ w\| \leq \|v\|+\|w\|$ (triangle inequality)
 \end{enumerate}
 
-Again, not all vector spaces have norms defined in them. 
-For those with defined norms, they are called the \textbf{normed spaces}.
-
 \noindent Examples:
 \begin{enumerate}
-\item In ${\mathbb{R}}^n$, let's define the \textbf{length of a vector} $x$ $ := \|x\| = $ $\sqrt{x_{1}^2 + x_{2}^2 + \ldots + x_{n}^2} = \sqrt{x'x}$, or $\|x\|^2$ $= x'x$. This is called the Euclidian norm, or the $L_2$ norm (denote by $\|x\|_2$). (verify it by yourself)
+\item In ${\mathbb{R}}^n$, let's define the \textbf{length of a vector} $x$ $ := \|x\| = $ $\sqrt{x_{1}^2 + x_{2}^2 + \ldots + x_{n}^2} = \sqrt{x'x}$, or $\|x\|^2$ $= x'x$. This is called the \textbf{Euclidian norm}, or the $L_2$ norm (denote by $\|x\|_2$). (verify it by yourself)
 \item Again in ${\mathbb{R}}^n$, if we define $\|x\|=|x_1|+\ldots+|x_n|$, it's also a norm called the $L_1$ norm (denote by $\|x\|_1$). (verify it by yourself)
 \item Given $f\in C_{[-1, 1]}$, we define $\|f\|_p=\left(\int_{-1}^1 |f(x)|^p dx \right)^{1\over p}$, which is also a norm. (see Minkowski Inequality)
 \item For any inner product space \( V\), \(\|x\|^2= \langle x,x \rangle \) defines a norm.
 \end{enumerate}
 
-In general, we can naturally obtain a norm from a well defined inner product space.
-Let $\|v\|=\sqrt{\langle v,v \rangle}$ for $\forall v\in V$, where $\langle \cdot,\cdot \rangle$ is the inner product on the space $V$.
-It's not hard to verify all the requirements in the definition of norm (verify it by yourself).
-Thus, for any defined inner product, there is a naturally derived norm.
-However, in most cases, the opposite (i.e. to obtain inner products from norms) is not obvious.
+Again, not all vector spaces have norms defined in them.  For those with defined norms, they are called the \textbf{normed spaces}.
 
+In general, we can naturally obtain a norm from a well defined inner product space. Let $\|v\|=\sqrt{\langle v,v \rangle}$ for $\forall v\in V$, where $\langle \cdot,\cdot \rangle$ is the inner product on the space $V$. It's not hard to verify all the requirements in the definition of norm (verify it by yourself). Thus, for any defined inner product, there is a naturally derived norm. However, in most cases, the opposite (i.e. to obtain inner products from norms) is not obvious.
+
+\paragraph{Metric Space}
 A more general definition on the vector space is the \textbf{metric}. 
-The metric is a function $d: V\times V\rightarrow \mathbb{R}$ such that for $x,y,z \in V$ it satisfies:
+The metric is a function $d: V \times V\rightarrow \mathbb{R}$ such that for $x,y,z \in V$ it satisfies:
 \begin{enumerate}
-\item $d(x,y)$ $= d(y,x)$
+\item $d(x,y) = d(y,x)$
 \item $d(x,y) \geq 0$, with equality if and only if $x=y$
 \item $d(x,y)\leq d(x,z)+d(y,z)$ (triangle inequality)
 \end{enumerate}
-Many analytic definitions (e.g. completeness, compactness, continuity, etc) can be defined under metric space.
+A vector space equipped with a metric is called \textbf{metric space}. Many analytic definitions (e.g. completeness, compactness, continuity, etc) can be defined under metric space.
 Please refer to the analysis material for more information.
 
 For any normed space, we can naturally derive a metric as $d(x,y)=\|x-y\|$. This metric is said to be induced by the norm $\|\cdot\|$. However, the opposite is not true. For example, assuming we define the discrete metric on the space $V$, where $d(x,y)=0$ if $x=y$ and $d(x,y)=1$ if $x\neq y$; it is not obvious what kind of norm should be defined in this space.
+
 If a metric $d$ on a vector space $V$ satisfies the properties:
 $\forall x, y\in V$ and $\forall r \in \mathbb{R}$,
 \begin{enumerate}
@@ -387,6 +375,7 @@ if we have a norm in it, we can naturally derived a metric in it.
 The opposite is not true.
 
 \subsection{Orthogonality}
+
 We say that vectors $v, w$ in $V$ are \textbf{orthogonal} if $ \langle v, w \rangle =
 0$, or equivalently, $angle(v,w)=\pi/2$. It is denoted as $v\perp w.$\\
 
@@ -394,13 +383,13 @@ We say that vectors $v, w$ in $V$ are \textbf{orthogonal} if $ \langle v, w \ran
 \begin{enumerate}
 \item In ${\mathbb{R}}^n$ the notion of orthogonality agrees with our
   usual perception of it. If $x$ is orthogonal to $y$, then
-  Pythagorean theorem tells us that $\|x\|^2 + \|y\|^2$ $= \|x -
-  y\|^2$. Expending this in terms of inner products we get:
+  \textbf{Pythagorean theorem} tells us that $\|x\|^2 + \|y\|^2$ $= \|x -
+  y\|^2$. Expanding this in terms of inner products we get:
 \begin{center}
 $x'x + y'y =$ $(x-y)'(x-y) =$ $x'x - y'x - x'y + y'y$ or $2 x'y = 0$
 \end{center}
 and thus $ \langle x, y \rangle = x'y = 0$.
-\item Nonzero orthogonal vectors are linearly independent. Suppose we have $q_1, q_2, \ldots, q_n$, a set of nonzero mutually orthogonal ($ \langle q_i, q_j \rangle = 0$ $\forall i \neq j$) vectors in $V$, and suppose that $r_1 q_1 + r_2 q_2 + \ldots + r_n q_n = 0$. Then taking inner product of $q_1$ with both sides, we have $r_1 \langle q_1, q_1 \rangle + r_2 \langle q_1, q_2 \rangle + \ldots + r_n \langle q_1 q_n\rangle = \langle q_1, 0 \rangle = 0$.  That reduces to $r_1 \|q_1\|^2 = 0$ and since $q_1 \neq 0$, we conclude that $r_1 = 0$. Similarly, $r_i = 0$ $\forall$ $1 \leq i \leq n$, and we conclude that $q_1, q_2, \ldots, q_n$ are linearly independent.
+\item Nonzero orthogonal vectors are linearly independent. Suppose we have $q_1, q_2, \ldots, q_n$, a set of nonzero mutually orthogonal vectors in $V$, i.e., $ \langle q_i, q_j \rangle = 0$ $\forall i \neq j$, and suppose that $r_1 q_1 + r_2 q_2 + \ldots + r_n q_n = 0$. Then taking inner product of $q_1$ with both sides, we have $r_1 \langle q_1, q_1 \rangle + r_2 \langle q_1, q_2 \rangle + \ldots + r_n \langle q_1 q_n\rangle = \langle q_1, 0 \rangle = 0$.  That reduces to $r_1 \|q_1\|^2 = 0$ and since $q_1 \neq 0$, we conclude that $r_1 = 0$. Similarly, $r_i = 0$ $\forall$ $1 \leq i \leq n$, and we conclude that $q_1, q_2, \ldots, q_n$ are linearly independent.
 \item Suppose we have a $n \times 1$ vector of observations $x =
   \left[ \begin{array} {c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array}
   \right]$. Then if we let $\bar{x} = \frac{1}{n} \displaystyle\sum_{i=1}^n {x_i}$, we can see that vector $e = \left[
@@ -413,14 +402,17 @@ and thus $ \langle x, y \rangle = x'y = 0$.
     {\bar{x}}^2 = 0$.
 \end{enumerate}
 
-
+\paragraph{Orthogonal subspace and complement}
 Suppose $S, T$ are subspaces of $V$. Then we say that they are \textbf{orthogonal subspaces} if every vector in $S$ is orthogonal to every vector in $T$. We say that $S$ is the \textbf{orthogonal complement} of $T$ in $V$, if $S$ contains ALL vectors orthogonal to vectors in $T$ and we write $S = T^\perp$. For example, the x-axis and y-axis are orthogonal subspaces of ${\mathbb{R}}^3$, but they are not orthogonal complements of each other, since y-axis does not contain $\left[ \begin{array} {c}  0 \\ 0 \\ 1 \end{array} \right]$, which is
 perpendicular to every vector in x-axis. However, y-z plane and x-axis ARE orthogonal complements of each other in ${\mathbb{R}}^3$. You should prove as an exercise that if dim$(V)$ $= n$, and dim$(S)$ $=k$, then dim$(S^\perp)$ $= n-k$.
 
 \subsection{Gram-Schmidt Process}
+
 Suppose we're given linearly independent vectors $v_{1}, v_{2}, \ldots, v_{n}$ in $V$, and there's an inner product defined on $V$. Then we know that $v_1, v_2, \ldots, v_n$ form a basis for the subspace which they span (why?).  Then, the \textbf{Gram-Schmidt process} can be used to construct an orthogonal basis for this subspace, as follows:
 
-Let $q_1 = v_1$ Suppose $v_2$ is not orthogonal to $v_1$. then let $r v_1$ be the \textbf{projection} of $v_2$ on $v_1$, i.e. we want to find $r \in \mathbb{R}$ s.t. $q_2 = v_2 - r q_1$ is orthogonal to $q_1$. Well, we should have $\langle q_1, (v_2 - r q_1) \rangle = 0$, and we get $r = \frac{\langle q_1, v_2 \rangle}{\langle q_1, q_1 \rangle}$. Notice that the span of $q_1, q_2$ is the same as the span of $v_1, v_2$, since all we did was to subtract multiples of original vectors from other original vectors. Proceeding in similar fashion, we obtain $q_i = v_i - \left(\left(\frac{\langle q_1, v_i \rangle}{\langle q_1, q_1 \rangle}\right) q_1 + \ldots + \left(\frac{\langle q_{i-1}, v_{i} \rangle}{\langle q_{i-1}, q_{i-1} \rangle}\right) q_{i-1}\right)$, and we thus end up with an orthogonal basis for the subspace. If we furthermore divide each of the resulting vectors $q_1, q_2, \ldots, q_n$ by its length, we are left with \textbf{orthonormal} basis, i.e. $\langle q_i, q_j \rangle = 0$ $\forall i \neq j$ and $\langle q_i, q_i \rangle = 1, \forall i$ (why?). We call these vectors that have length 1 \textbf{unit} vectors.
+Let $q_1 = v_1$ Suppose $v_2$ is not orthogonal to $v_1$. then let $r v_1$ be the \textbf{projection} of $v_2$ on $v_1$, i.e. we want to find $r \in \mathbb{R}$ s.t. $q_2 = v_2 - r q_1$ is orthogonal to $q_1$. Well, we should have $\langle q_1, (v_2 - r q_1) \rangle = 0$, and we get $r = \frac{\langle q_1, v_2 \rangle}{\langle q_1, q_1 \rangle}$. Notice that the span of $q_1, q_2$ is the same as the span of $v_1, v_2$, since all we did was to subtract multiples of original vectors from other original vectors. 
+
+Proceeding in similar fashion, we obtain $q_i = v_i - \left(\left(\frac{\langle q_1, v_i \rangle}{\langle q_1, q_1 \rangle}\right) q_1 + \ldots + \left(\frac{\langle q_{i-1}, v_{i} \rangle}{\langle q_{i-1}, q_{i-1} \rangle}\right) q_{i-1}\right)$, and we thus end up with an orthogonal basis for the subspace. If we furthermore divide each of the resulting vectors $q_1, q_2, \ldots, q_n$ by its length, we are left with \textbf{orthonormal basis}, i.e. $\langle q_i, q_j \rangle = 0$ $\forall i \neq j$ and $\langle q_i, q_i \rangle = 1, \forall i$ (why?). We call these vectors that have length 1 \textbf{unit} vectors.
 
 You can now construct an orthonormal basis for the subspace of $F_{[-1, 1]}$ spanned by $f(x) = 1, g(x) = x$, and $h(x) = x^2$ (Exercise 2.6 (b)). An important point to take away is that given any basis for finite-dimensional $V$, if there's an inner product defined on $V$, we can always turn the given basis into an orthonormal basis.
 

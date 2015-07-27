@@ -7,7 +7,9 @@
 \contentsline {subsection}{\numberline {2.2}Special Spaces}{7}
 \contentsline {paragraph}{Inner product space}{7}
 \contentsline {paragraph}{Normed space}{8}
+\contentsline {paragraph}{Metric Space}{9}
 \contentsline {subsection}{\numberline {2.3}Orthogonality}{10}
+\contentsline {paragraph}{Orthogonal subspace and complement}{10}
 \contentsline {subsection}{\numberline {2.4}Gram-Schmidt Process}{11}
 \contentsline {subsection}{Exercises}{11}
 \contentsline {section}{\numberline {3}Matrices and Matrix Algebra}{13}
