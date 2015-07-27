@@ -10,35 +10,35 @@
 \contentsline {paragraph}{Metric Space}{9}
 \contentsline {subsection}{\numberline {2.3}Orthogonality}{10}
 \contentsline {paragraph}{Orthogonal subspace and complement}{10}
-\contentsline {subsection}{\numberline {2.4}Gram-Schmidt Process}{11}
+\contentsline {subsection}{\numberline {2.4}Gram-Schmidt Process}{10}
 \contentsline {subsection}{Exercises}{11}
-\contentsline {section}{\numberline {3}Matrices and Matrix Algebra}{13}
-\contentsline {subsection}{\numberline {3.1}Matrix Operations}{13}
-\contentsline {subsection}{\numberline {3.2}Special Matrices}{15}
-\contentsline {subsection}{\numberline {3.3}Fundamental Spaces}{16}
-\contentsline {subsection}{Exercises}{17}
-\contentsline {section}{\numberline {4}Projections and Least Squares Estimation}{18}
-\contentsline {subsection}{\numberline {4.1}Projections}{18}
-\contentsline {subsection}{\numberline {4.2}Applications to Statistics}{21}
-\contentsline {subsection}{Exercises}{23}
-\contentsline {section}{\numberline {5}Differentiation}{24}
-\contentsline {subsection}{\numberline {5.1}Basics}{24}
-\contentsline {subsection}{\numberline {5.2}Jacobian and Chain Rule}{24}
-\contentsline {subsection}{Exercises}{26}
-\contentsline {section}{\numberline {6}Matrix Decompositions}{27}
-\contentsline {subsection}{\numberline {6.1}Determinants}{27}
-\contentsline {subsection}{\numberline {6.2}Eigenvalues and Eigenvectors}{29}
-\contentsline {subsection}{\numberline {6.3}Complex Matrices and Basic Results}{30}
-\contentsline {subsection}{\numberline {6.4}SVD and Pseudo-inverse}{33}
-\contentsline {subsection}{Exercises}{34}
-\contentsline {section}{\numberline {7}Statistics: Random Variables}{35}
-\contentsline {subsection}{\numberline {7.1}Expectation, Variance and Covariance}{35}
-\contentsline {subsection}{\numberline {7.2}Distribution of Functions of Random Variables}{37}
-\contentsline {subsection}{\numberline {7.3}Derivation of Common Univariate Distributions}{40}
-\contentsline {subsection}{\numberline {7.4}Random Vectors: Expectation and Variance}{43}
-\contentsline {subsection}{Exercises}{45}
-\contentsline {section}{\numberline {8}Further Applications to Statistics: Normal Theory and F-test}{46}
-\contentsline {subsection}{\numberline {8.1}Bivariate Normal Distribution}{46}
-\contentsline {subsection}{\numberline {8.2}F-test}{47}
-\contentsline {subsection}{Exercises}{49}
-\contentsline {section}{\numberline {9}References}{50}
+\contentsline {section}{\numberline {3}Matrices and Matrix Algebra}{12}
+\contentsline {subsection}{\numberline {3.1}Matrix Operations}{12}
+\contentsline {subsection}{\numberline {3.2}Special Matrices}{14}
+\contentsline {subsection}{\numberline {3.3}Fundamental Spaces}{15}
+\contentsline {subsection}{Exercises}{16}
+\contentsline {section}{\numberline {4}Projections and Least Squares Estimation}{17}
+\contentsline {subsection}{\numberline {4.1}Projections}{17}
+\contentsline {subsection}{\numberline {4.2}Applications to Statistics}{20}
+\contentsline {subsection}{Exercises}{22}
+\contentsline {section}{\numberline {5}Differentiation}{23}
+\contentsline {subsection}{\numberline {5.1}Basics}{23}
+\contentsline {subsection}{\numberline {5.2}Jacobian and Chain Rule}{23}
+\contentsline {subsection}{Exercises}{25}
+\contentsline {section}{\numberline {6}Matrix Decompositions}{26}
+\contentsline {subsection}{\numberline {6.1}Determinants}{26}
+\contentsline {subsection}{\numberline {6.2}Eigenvalues and Eigenvectors}{28}
+\contentsline {subsection}{\numberline {6.3}Complex Matrices and Basic Results}{29}
+\contentsline {subsection}{\numberline {6.4}SVD and Pseudo-inverse}{32}
+\contentsline {subsection}{Exercises}{33}
+\contentsline {section}{\numberline {7}Statistics: Random Variables}{34}
+\contentsline {subsection}{\numberline {7.1}Expectation, Variance and Covariance}{34}
+\contentsline {subsection}{\numberline {7.2}Distribution of Functions of Random Variables}{36}
+\contentsline {subsection}{\numberline {7.3}Derivation of Common Univariate Distributions}{39}
+\contentsline {subsection}{\numberline {7.4}Random Vectors: Expectation and Variance}{42}
+\contentsline {subsection}{Exercises}{44}
+\contentsline {section}{\numberline {8}Further Applications to Statistics: Normal Theory and F-test}{45}
+\contentsline {subsection}{\numberline {8.1}Bivariate Normal Distribution}{45}
+\contentsline {subsection}{\numberline {8.2}F-test}{46}
+\contentsline {subsection}{Exercises}{48}
+\contentsline {section}{\numberline {9}References}{49}
