@@ -454,39 +454,34 @@ An $m \times n$ matrix $A$ is a rectangular array of numbers that has $m$
 rows and $n$ columns, and we write:
 \begin{center}
 $A = \left[ \begin{array} {l c c r} a_{11} & a_{12} & \ldots & a_{1n}  \\
-    a_{21} & a_{22} & \ldots & a_{2n} \\ \vdots & \ddots & \ddots & \vdots
+    a_{21} & a_{22} & \ldots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots
     \\ a_{m1} & a_{m2} & \ldots & a_{mn} \end{array} \right]$
 \end{center}
-For the time being we'll restrict ourselves to real matrices, so
-$\forall$ $1 \leq i \leq m$ and $\forall$ $1 \leq j \leq n$, $a_{ij}
-\in \mathbb{R}$. Notice that a familiar vector $x = \left[
-  \begin{array} {c} x_1 \\ x_2 \\ \vdots \\ x_n \end{array} \right]$
-$\in {\mathbb{R}}^n$ is just a $n \times 1$ matrix (we say $x$ is a
-\textbf{column vector}. A $1 \times n$ matrix is referred to as a
-\textbf{row vector}. If $m = n$, we say that $A$ is
-\textbf{square}.
+For the time being we'll restrict ourselves to real matrices, so $\forall$ $1 \leq i \leq m$ and $\forall$ $1 \leq j \leq n$, $a_{ij} \in \mathbb{R}$. Notice that a familiar vector $x = \left[ x_1, x_2, \cdots x_n \right]' \in {\mathbb{R}}^n$ is just a $n \times 1$ matrix (we say $x$ is a \textbf{column vector}.) A $1 \times n$ matrix is referred to as a \textbf{row vector}. If $m = n$, we say that $A$ is \textbf{square}.
 
 \subsection{Matrix Operations}
 
-\noindent \emph{Matrix addition}
+\paragraph{Matrix addition}
 
 Matrix addition is defined elementwise, i.e. $A + B = C$, where
 $c_{ij} = a_{ij} + b_{ij}$. Note that this implies that $A + B$ is
 defined only if $A$ and $B$ have the same dimensions. Also, note that
 $A + B = B + A$. \\
 
-\noindent \emph{Scalar multiplication}
+\paragraph{Scalar multiplication}
 
 Scalar multiplication is also defined elementwise. If $r \in
 \mathbb{R}$, then $r A = B$, where $b_{ij} = r a_{ij}$. Any matrix can
 be multiplied by a scalar. Multiplication by 0 results in zero matrix,
 and multiplication by 1 leaves matrix unchanged, while multiplying $A$
 by -1 results in matrix $-A$, s.t. $A + (-A) = A - A = 0_{m \times
-  n}$. You should check at this point that a set of all $m \times n$
+  n}$. 
+  
+You should check at this point that a set of all $m \times n$
 matrices is a vector space with operations of addition and scalar
 multiplication as defined above.\\
 
-\noindent \emph{Matrix multiplication}
+\paragraph{Matrix multiplication}
 
 Matrix multiplication is trickier. Given a $m \times n$ matrix $A$
 and a $p \times q$ matrix $B$, $AB$ is only defined if $n = p$. In
@@ -496,8 +491,9 @@ element of $AB$ is the inner product of the $i$-th row of $A$ and
 $j$-th column of $B$, and the resulting product matrix is $m \times
 q$. You should at this point come up with your own examples of $A, B$
 s.t both $AB$ and $BA$ are defined, but $AB \neq BA$. Thus matrix
-multiplication is, in general, non-commutative. Below we list some
-very useful ways to think about matrix multiplication:
+multiplication is, in general, non-commutative. 
+
+Below we list some very useful ways to think about matrix multiplication:
 \begin{enumerate}
 \item Suppose $A$ is $m \times n$ matrix, and $x$ is a $n \times 1$
   column vector. Then if we let $a_1, a_2, \ldots, a_n$ denote the respective
