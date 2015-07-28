@@ -531,13 +531,16 @@ Below we list some very useful ways to think about matrix multiplication:
   a_2 b_2 + \ldots + a_n b_n$, the sum of $n$ matrices, each of which
   is a product of a row and a column (check this for yourself!).
 \end{enumerate}
+
+\paragraph{Transpose}
 Let $A$ be $m \times n$, then the \textbf{transpose} of $A$ is
 the $n \times m$ matrix $A'$, s.t. $a_{ij} = a_{ji}'$. Now the
 notation we used to define the inner product on ${\mathbb{R}}^n$ makes
 sense, since given two $n \times 1$ column vectors $x$ and $y$, their
-inner product $<x, y>$ is just $x'y$ according to matrix
+inner product $\langle x, y \rangle$ is just $x'y$ according to matrix
 multiplication.
 
+\paragraph{Inverse}
 Let $I_{n \times n}$, denote the $n \times n$ \textbf{identity}
 matrix, i.e. the matrix that has 1's down its main diagonal and 0's
 everywhere else (in future we might omit the dimensional subscript and
@@ -546,13 +549,13 @@ context). You should check that in that case, $I_{n \times n} A = A
 I_{n \times n} = A$ for every $n \times n$ $A$. We say that $n \times
 n$ $A$, has $n \times n$ \textbf{inverse}, denoted $A^{-1}$, if $A
 A^{-1} = A^{-1} A = I_{n \times n}$.  If $A$ has inverse, we say that
-$A$ is \textbf{invertible}. Not every matrix has inverse, as you can
-easily see by considering the $n \times n$ zero matrix. A square matrix 
-that is not invertible is called \textbf{singular} or \textbf{degenerate}. We 
-will assume that you are familiar with the use of elimination to calculate
-inverses of invertible matrices and will not present this
-material. The following are some important results about inverses and
-transposes:
+$A$ is \textbf{invertible}. 
+
+Not every matrix has inverse, as you can easily see by considering the $n \times n$ zero matrix. A square matrix 
+that is not invertible is called \textbf{singular} or \textbf{degenerate}. We  will assume that you are familiar with the use of elimination to calculate
+inverses of invertible matrices and will not present this material. 
+
+The following are some important results about inverses and transposes:
 \begin{enumerate}
 \item $(AB)' = B' A'$
 
@@ -581,7 +584,7 @@ for all $i=1,...,n$.  Hence, if $C$ is given by $C_{ij} = c_{ij}$, then
 
 \[AC = [e_1 \, e_2 \, ... \, e_n] = I_n. \]
 
-To see that \(CA=I\), note ACA=IA=A, and therefore A(CA-I)=0. Let \(Z=CA-I\). Then \(Az_i=0\) for each column of \(Z\). By assumption \(Az_i=0 \Rightarrow z_i=0\), so \(Z=0\), \(CA=I\). Hence, $C = A^{-1}$ and \(A\) is invertible $\Box$
+To see that \(CA=I\), note ACA=IA=A, and therefore A(CA-I)=0. Let \(Z=CA-I\). Then \(Az_i=0\) for each column of \(Z\). By assumption \(Az_i=0 \Rightarrow z_i=0\), so \(Z=0\), \(CA=I\). Hence, $C = A^{-1}$ and \(A\) is invertible. $\Box$
 
 
 
@@ -590,36 +593,15 @@ To see that \(CA=I\), note ACA=IA=A, and therefore A(CA-I)=0. Let \(Z=CA-I\). Th
 
 \subsection{Special Matrices}
 
-A square matrix $A$ is said to be \textbf{symmetric} if $A = A'$. If
-$A$ is symmetric, then $A^{-1}$ is also symmetric (Exercise 3.2). A
-square matrix $A$ is said to be \textbf{orthogonal} if $A' =
-A^{-1}$. You should prove that columns of an orthogonal matrix are
-orthonormal, and so are the rows. Conversely, any square
-matrix with orthonormal columns is orthogonal. We note that orthogonal
-matrices preserve lengths and inner products: $$<Qx, Qy> = x'Q'Qy =
-x'I_{n \times n}y = x'y.$$ In particular $\|Qx\|= \sqrt{x'Q'Qx} =
-\|x\|$. Also, if $A$, and $B$ are orthogonal, then so are $A^{-1}$ and
-$AB$. We say that a square matrix $A$ is \textbf{idempotent} if $A^2 = A$.
+A square matrix $A$ is said to be \textbf{symmetric} if $A = A'$. If $A$ is symmetric, then $A^{-1}$ is also symmetric (Exercise 3.2). 
 
-We say that a square matrix $A$ is \textbf{positive definite} if $A$
-is symmetric and if $\forall$ $n \times 1$ vectors $x \neq 0_{n \times
-  1}$, we have $x'Ax > 0$. We say that $A$ is \textbf{positive
-  semi-definite} (or \textbf{non-negative definite} if $A$ is
-symmetric and $\forall$ $n \times 1$ vectors $x \neq 0_{n \times 1}$,
-we have $x'Ax \geq 0$. You should prove for yourself that every
-positive definite matrix is invertible (Exercise 3.3)). One can also show that if $A$ is positive definite, then so is $A'$ (more
-generally, if $A$ is positive semi-definite, then so is $A'$).
+A square matrix $A$ is said to be \textbf{orthogonal} if $A' = A^{-1}$. You should prove that columns of an orthogonal matrix are orthonormal, and so are the rows. Conversely, any square matrix with orthonormal columns is orthogonal. We note that orthogonal matrices preserve lengths and inner products: $$\langle Qx, Qy \rangle = x'Q'Qy = x'I_{n \times n}y = x'y.$$ In particular $\|Qx\|= \sqrt{x'Q'Qx} = \|x\|$. Also, if $A$, and $B$ are orthogonal, then so are $A^{-1}$ and $AB$. We say that a square matrix $A$ is \textbf{idempotent} if $A^2 = A$.
 
-We say that a square matrix $A$ is \textbf{diagonal} if $a_{ij} = 0$
-$\forall$ $i \neq j$. We say that $A$ is \textbf{upper triangular} if
-$a_{ij} = 0$ $\forall$ $i > j$. \textbf{Lower triangular} matrices are
-defined similarly.\\
-We also introduce another concept here: for a square matrix $A$, its
-\textbf{trace} is defined to be the sum of the entries on main
-diagonal($tr(A) = \displaystyle\sum_{i=1}^{n} {a_{ii}}$). For example,
- $tr(I_{n \times n}) = n$. You may prove for yourself (by method of
- entry-by-entry comparison) that $tr(AB) = tr(BA)$, and $tr(ABC) =
- tr(CAB)$. It's also immediately obvious that $tr(A+B) = tr(A) + tr(B)$.
+We say that a square matrix $A$ is \textbf{positive definite} if $A$ is symmetric and if $\forall$ $n \times 1$ vectors $x \neq 0_{n \times 1}$, we have $x'Ax > 0$. We say that $A$ is \textbf{positive  semi-definite} (or \textbf{non-negative definite} if $A$ is symmetric and $\forall$ $n \times 1$ vectors $x \neq 0_{n \times 1}$, we have $x'Ax \geq 0$. You should prove for yourself that every positive definite matrix is invertible (Exercise 3.3)). One can also show that if $A$ is positive definite, then so is $A'$ (more generally, if $A$ is positive semi-definite, then so is $A'$).
+
+We say that a square matrix $A$ is \textbf{diagonal} if $a_{ij} = 0$ $\forall$ $i \neq j$. We say that $A$ is \textbf{upper triangular} if $a_{ij} = 0$ $\forall$ $i > j$. \textbf{Lower triangular} matrices are defined similarly.
+
+We also introduce another concept here: for a square matrix $A$, its \textbf{trace} is defined to be the sum of the entries on main diagonal($tr(A) = \displaystyle\sum_{i=1}^{n} {a_{ii}}$). For example, $tr(I_{n \times n}) = n$. You may prove for yourself (by method of entry-by-entry comparison) that $tr(AB) = tr(BA)$, and $tr(ABC) = tr(CAB)$. It's also immediately obvious that $tr(A+B) = tr(A) + tr(B)$.
 
 \subsection{Fundamental Spaces}
 Let $A$ be $m \times n$. We will denote by $col(A)$ the subspace of

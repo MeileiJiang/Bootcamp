@@ -17,6 +17,8 @@
 \contentsline {paragraph}{Matrix addition}{12}
 \contentsline {paragraph}{Scalar multiplication}{12}
 \contentsline {paragraph}{Matrix multiplication}{12}
+\contentsline {paragraph}{Transpose}{13}
+\contentsline {paragraph}{Inverse}{13}
 \contentsline {subsection}{\numberline {3.2}Special Matrices}{14}
 \contentsline {subsection}{\numberline {3.3}Fundamental Spaces}{15}
 \contentsline {subsection}{Exercises}{16}
