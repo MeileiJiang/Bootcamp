@@ -361,9 +361,9 @@ Please refer to the analysis material for more information.
 For any normed space, we can naturally derive a metric as $d(x,y)=\|x-y\|$. This metric is said to be induced by the norm $\|\cdot\|$. However, the opposite is not true. For example, assuming we define the discrete metric on the space $V$, where $d(x,y)=0$ if $x=y$ and $d(x,y)=1$ if $x\neq y$; it is not obvious what kind of norm should be defined in this space.
 
 If a metric $d$ on a vector space $V$ satisfies the properties:
-$\forall x, y\in V$ and $\forall r \in \mathbb{R}$,
+$\forall x, y, z\in V$ and $\forall r \in \mathbb{R}$,
 \begin{enumerate}
-\item $d(x,y) = d(x + r, y+r)$ (translation invariance)
+\item $d(x,y) = d(x + z, y+z)$ (translation invariance)
 \item $d(rx, ry) = |r| d(x, y)$ (homogeneity)
 \end{enumerate}
 then we can define a norm on $V$ by $\|x\| := d(x,0)$.\\
@@ -520,7 +520,7 @@ Below we list some very useful ways to think about matrix multiplication:
   also implies that every column of product matrix is a linear
   combination of columns of $A$.
 \item Once again, consider $m \times n$ $A$ and $n \times k$ $B$, and
-  let $a_1, a_2, \ldots a_n$ denote rows of $A$ (they are, of course,
+  let $a_1, a_2, \ldots a_m$ denote rows of $A$ (they are, of course,
   just $1 \times n$ row vectors). Then letting $c_i$ denote the $i$-th
   row of $C = AB$, we have $c_i = a_i B$, i.e. we get the rows of the
   product matrix by applying rows of $A$ to $B$. Notice, that it means
@@ -576,7 +576,7 @@ The following are some important results about inverses and transposes:
 \emph{Proof}: Assume $A^{-1}$ exists.  Then,
 \begin{eqnarray*}&& Ax = 0 \\ &\rightarrow& A^{-1}(Ax) = A^{-1}0 \\ &\rightarrow& x = 0. \end{eqnarray*}
 
-Now, assume $Ax = 0$ implies $x=0$.  Then the columns ${a_1,...,a_n}$ of $A$ are linearly independent and therefore form a basis for $\mathbb{R}^{n}$ (Exercise 2.4).  So, if \\ $e_1 = \left[ \begin{array} {c} 1 \\ 0 \\ \vdots \\ 0 \end{array} \right]$, $ e_2 = \left[\begin{array} {c} 0 \\ 1 \\ \vdots \\ 0 \end{array} \right]$, ..., $e_n = \left[\begin{array} {c} 0 \\ 0 \\ \vdots \\ 1 \end{array} \right]$, we can write
+Now, assume $Ax = 0$ implies $x=0$.  Then the columns ${a_1,...,a_n}$ of $A$ are linearly independent and therefore form a basis for $\mathbb{R}^{n}$ (Exercise 2.4).  So, if \\ $e_1 = \left[ 1 , 0 , \cdots , 0\right]'$, $ e_2 = \left[ 0, 1, \cdots, 0 \right]$, ..., $e_n = \left[ 0, 0, \cdots, 1 \right]$, we can write
 
 \[c_{1i}a_1+c_{2i}a_2+...+c_{ni}a_n = A \left[ \begin{array} {c} c_{1,i} \\ c_{2,i} \\ \vdots \\ c_{n,i} \end{array} \right] = e_i \]
 
@@ -593,17 +593,28 @@ To see that \(CA=I\), note ACA=IA=A, and therefore A(CA-I)=0. Let \(Z=CA-I\). Th
 
 \subsection{Special Matrices}
 
+\paragraph{Symmetric Matrix}
 A square matrix $A$ is said to be \textbf{symmetric} if $A = A'$. If $A$ is symmetric, then $A^{-1}$ is also symmetric (Exercise 3.2). 
 
-A square matrix $A$ is said to be \textbf{orthogonal} if $A' = A^{-1}$. You should prove that columns of an orthogonal matrix are orthonormal, and so are the rows. Conversely, any square matrix with orthonormal columns is orthogonal. We note that orthogonal matrices preserve lengths and inner products: $$\langle Qx, Qy \rangle = x'Q'Qy = x'I_{n \times n}y = x'y.$$ In particular $\|Qx\|= \sqrt{x'Q'Qx} = \|x\|$. Also, if $A$, and $B$ are orthogonal, then so are $A^{-1}$ and $AB$. We say that a square matrix $A$ is \textbf{idempotent} if $A^2 = A$.
+\paragraph{Orthogonal Matrix}
+A square matrix $A$ is said to be \textbf{orthogonal} if $A' = A^{-1}$. You should prove that columns of an orthogonal matrix are orthonormal, and so are the rows. Conversely, any square matrix with orthonormal columns is orthogonal. We note that orthogonal matrices preserve lengths and inner products: 
+$$\langle Qx, Qy \rangle = x'Q'Qy = x'I_{n \times n}y = x'y.$$ 
+In particular $\|Qx\|= \sqrt{x'Q'Qx} = \|x\|$. Also, if $A$, and $B$ are orthogonal, then so are $A^{-1}$ and $AB$. 
 
+\paragraph{Idempotent Matrix}
+We say that a square matrix $A$ is \textbf{idempotent} if $A^2 = A$.
+
+\paragraph{Positive Definite Matrix}
 We say that a square matrix $A$ is \textbf{positive definite} if $A$ is symmetric and if $\forall$ $n \times 1$ vectors $x \neq 0_{n \times 1}$, we have $x'Ax > 0$. We say that $A$ is \textbf{positive  semi-definite} (or \textbf{non-negative definite} if $A$ is symmetric and $\forall$ $n \times 1$ vectors $x \neq 0_{n \times 1}$, we have $x'Ax \geq 0$. You should prove for yourself that every positive definite matrix is invertible (Exercise 3.3)). One can also show that if $A$ is positive definite, then so is $A'$ (more generally, if $A$ is positive semi-definite, then so is $A'$).
 
+\paragraph{Diagonal and Triangular Matrix}
 We say that a square matrix $A$ is \textbf{diagonal} if $a_{ij} = 0$ $\forall$ $i \neq j$. We say that $A$ is \textbf{upper triangular} if $a_{ij} = 0$ $\forall$ $i > j$. \textbf{Lower triangular} matrices are defined similarly.
 
+\paragraph{Trace}
 We also introduce another concept here: for a square matrix $A$, its \textbf{trace} is defined to be the sum of the entries on main diagonal($tr(A) = \displaystyle\sum_{i=1}^{n} {a_{ii}}$). For example, $tr(I_{n \times n}) = n$. You may prove for yourself (by method of entry-by-entry comparison) that $tr(AB) = tr(BA)$, and $tr(ABC) = tr(CAB)$. It's also immediately obvious that $tr(A+B) = tr(A) + tr(B)$.
 
-\subsection{Fundamental Spaces}
+\subsection{The Four Fundamental Spaces}
+\paragraph{Column Space and Row Space}
 Let $A$ be $m \times n$. We will denote by $col(A)$ the subspace of
 ${\mathbb{R}}^m$ that is spanned by columns of $A$, and we'll call
 this subspace the \textbf{column space} of $A$. Similarly, we define the
@@ -611,6 +622,7 @@ this subspace the \textbf{column space} of $A$. Similarly, we define the
 spanned by rows of $A$ and we notice that it is precisely
 $col(A')$.
 
+\paragraph{Nullspace and Left Nullspace}
 Now, let $N(A) = \{x \in {\mathbb{R}}^n$ $: Ax = 0\}$. You should
 check for yourself that this set, which we call \textbf{kernel} or
 \textbf{nullspace} of $A$, is indeed subspace of
@@ -618,7 +630,7 @@ ${\mathbb{R}}^n$. Similary, we define the \textbf{left nullspace} of
 $A$ to be $\{x \in {\mathbb{R}}^m$ $: x'A = 0\}$, and we notice that
 this is precisely $N(A')$.
 
-The fundamental theorem of linear algebra states:
+\textbf{The fundamental theorem of linear algebra} states:
 \begin{enumerate}
 \item dim$(col(A))$ = $r$ = dim$(col(A'))$. Dimension of column space
   is the same as dimension of row space. This dimension is called the
@@ -638,29 +650,11 @@ independent iff the nullspace doesn't contain any vector other than
 zero. Similarly, rows are linearly independent iff the left nullspace
 doesn't contain any vector other than zero.
 
-We now make some remarks about solving equations of the form $Ax = b$,
-where $A$ is a $m \times n$ matrix, $x$ is $n \times 1$ vector, and
-$b$ is $m \times 1$ vector, and we are trying to solve for $x$. First
-of all, it should be clear at this point that if $b \notin col(A)$,
-then the solution doesn't exist. If $b \in col(A)$, but the columns of
-$A$ are not linearly independent, then the solution will not be
-unique. That's because there will be many ways to combine columns of
-$A$ to produce $b$, resulting in many possible $x$'s. Another way to
-see this is to notice that if the columns are dependent, the nullspace
-contains some non-trivial vector $x^*$, and if $x$ is some solution to
-$Ax = b$, then $x + x^*$ is also a solution. Finally we notice that if
-$r = m > n$ (i.e. if the rows are linearly independent), then the
-columns MUST span the whole ${\mathbb{R}}^n$, and therefore a solution
-exists for every $b$ (though it may not be unique).
+\paragraph{Solving Linear Equations}
+We now make some remarks about solving equations of the form $Ax = b$, where $A$ is a $m \times n$ matrix, $x$ is $n \times 1$ vector, and $b$ is $m \times 1$ vector, and we are trying to solve for $x$. First of all, it should be clear at this point that if $b \notin col(A)$, then the solution doesn't exist. If $b \in col(A)$, but the columns of $A$ are not linearly independent, then the solution will not be unique. That's because there will be many ways to combine columns of $A$ to produce $b$, resulting in many possible $x$'s. Another way to see this is to notice that if the columns are dependent, the nullspace contains some non-trivial vector $x^*$, and if $x$ is some solution to $Ax = b$, then $x + x^*$ is also a solution. Finally we notice that if $r = m < n$ (i.e. if the rows are linearly independent), then the columns MUST span the whole ${\mathbb{R}}^m$, and therefore a solution exists for every $b$ (though it may not be unique).
 
-We conclude then, that if $r = m$, the solution to $Ax = b$ always
-exists, and if $r=n$, the solution (if it exists) is unique. This
-leads us to conclude that if $n = r = m$ (i.e. $A$ is full-rank square
-matrix), the solution always exists and is unique. The proof based on
-elimination techniques (which you should be familiar with) then
-establishes that a square matrix $A$ is full-rank iff it is
-invertible.
-
+We conclude then, that if $r = m$, the solution to $Ax = b$ always exists, and if $r=n$, the solution (if it exists) is unique. This leads us to conclude that if $n = r = m$ (i.e. $A$ is full-rank square matrix), the solution always exists and is unique. The proof based on elimination techniques (which you should be familiar with) then establishes that a square matrix $A$ is full-rank iff it is invertible.
+\\~\\
 We now give the following results:
 \begin{enumerate}
 \item rank($A'A$) = rank($A$). In particular, if rank($A$) = n
@@ -722,20 +716,12 @@ Show that rank($A'A$) = rank($A$). In particular, if rank($A$) = n
 
 \clearpage
 \newpage
+
 \section{Projections and Least Squares Estimation}
 \subsection{Projections}
-In an inner product space, suppose we have $n$ linearly independent vectors $a_1, a_2, \ldots,
-a_n$ in ${\mathbb{R}}^m$, and we want to find the projection of a
-vector $b$ in ${\mathbb{R}}^m$ onto the space spanned by $a_1, a_2,
-\ldots, a_n$, i.e. to find some linear combination $x_1 a_1 + x_2 a_2
-+ \ldots + x_n a_n =$ $b^*$, s.t. $<b^*,b - b^*>=0$. It's
-clear that if $b$ is already in the span of $a_1, a_2, \ldots, a_n$,
-then $b^* = b$ (vector just projects to itself), and if $b$ is
-perpendicular to the space spanned by $a_1, a_2, \ldots, a_n$, then
-$b^* = 0$ (vector projects to the zero vector).
+In an inner product space, suppose we have $n$ linearly independent vectors $a_1, a_2, \ldots, a_n$ in ${\mathbb{R}}^m$, and we want to find the projection of a vector $b$ in ${\mathbb{R}}^m$ onto the space spanned by $a_1, a_2, \ldots, a_n$, i.e. to find some linear combination $x_1 a_1 + x_2 a_2 + \ldots + x_n a_n =$ $b^*$, s.t. $ \langle b^*,b - b^* \rangle=0$. It's clear that if $b$ is already in the span of $a_1, a_2, \ldots, a_n$, then $b^* = b$ (vector just projects to itself), and if $b$ is perpendicular to the space spanned by $a_1, a_2, \ldots, a_n$, then $b^* = 0$ (vector projects to the zero vector).
 
-\textbf{Hilbert Projection Theorem}: Assume $V$ is a Hilbert space (complete inner product space) and $S$ is a closed convex subset of $V$.
-For any $v\in V$, there exist an unique $s^*$ in $S$ s.t. 
+\paragraph{Hilbert Projection Theorem} Assume $V$ is a Hilbert space (complete inner product space) and $S$ is a closed convex subset of $V$. For any $v\in V$, there exist an unique $s^*$ in $S$ s.t. 
 \[
 s^*=\arg\min\limits_{s\in S} \|v-s\|
 \]
@@ -751,31 +737,31 @@ s^*=\arg\min\limits_{s\in S} \|v-s\|.
 \]
 To obtain uniqueness use the Parallelogram Law and the convexity of \(S\).    \(\Box\)\\
 
-\noindent \textbf{Corollary:} Assume that \(V\) is as above, and that \( S \) is a closed subspace of \(V\). Then \( s^* \) is the projection of \( v \in V\) onto \(S\) iff \(<v-s^*, s>=0  \hspace{3mm}\forall s \in S \). 
+\noindent \textbf{Corollary:} Assume that \(V\) is as above, and that \( S \) is a closed subspace of \(V\). Then \( s^* \) is the projection of \( v \in V\) onto \(S\) iff \(\langle v-s^*, s \rangle =0  \hspace{3mm}\forall s \in S \). 
 
 \textbf{Proof:} Let \(v\in V\), and assume that \( s^*\) is the projection of \(v\) onto \(S\). The result holds trivialy if \(s=0\) so assume \(s\ne 0\). Since $s^*-ts\in S$, by the Projection Theorem for all \(s\in S\) the function \( f_s(t) = \| v-s^*+ts\|^2 \) has a minimum at \(t=0\). Rewriting this function we see 
 \begin{align*}
  f_s(t) & = \| v-s^*+ts\|^2 \\
-& =<v-s^*+ts, v-s^*+ts> \\
-& = <ts,ts> -2 <v-s^*,ts> + <v-s^*,v-s^*> \\
-&=t^2 \|s\|^2 -2t<v-s^*,s> + \|v-s^*\|^2.
+& = \langle v-s^*+ts, v-s^*+ts \rangle \\
+& = \langle ts,ts \rangle + 2 \langle v-s^*,ts \rangle + \langle v-s^*,v-s^* \rangle \\
+&=t^2 \|s\|^2 + 2t \langle v-s^*,s \rangle + \|v-s^*\|^2.
 \end{align*} 
-Since this is a quadratic function of \(t\) with positive quadratic coefficient, the minimum must occur at the vertex, which implies \( <v-s^*,s>=0\). 
+Since this is a quadratic function of \(t\) with positive quadratic coefficient, the minimum must occur at the vertex, which implies \(\langle v-s^*,s \rangle=0\). 
 
 For the opposite direction, note first that the function \(f_s(t)\) will still be minimized at \(t=0\) for all \(s \in S\). Then for any \( s' \in S\) take \(s \in S \) such that \( s=s^*-s'\). Then taking \(t=1\) it follows that 
 \[
 \|v-s^*\|=f_s(0) \le f_s(1)=\|v-s^*+s^*-s'\|=\|v-s'\|.
 \]
 Thus by \(s^*\) is the projection of \(v\) onto  \(S\). \( \Box \) \\
-
+\\~\\
 The following facts follow from the Projection Theorem and its Corollary. 
 
 \noindent\textbf{Fact 1:} The projection onto a closed subspace \(S \) of \(V\), denoted by \(P_S\), is a linear operator.
 
 \textbf{Proof:} Let \(x,y \in V\) and \(a,b \in \mathbb{R} \). Then for any \(s \in S \)
 \begin{align*}
-<ax+by-aP_Sx-bP_Sy,s> &=  <a(x-P_Sx),s> + <b(y-P_Sy),s> \\
-&= a<x-P_Sx,s> + b<y-P_Sy,s> \\
+\langle ax+by-aP_Sx-bP_Sy,s \rangle &=  \langle a(x-P_Sx),s \rangle + \langle b(y-P_Sy),s \rangle \\
+&= a \langle x-P_Sx,s \rangle + b \langle y-P_Sy,s \rangle \\
 & = a\cdot 0+b \cdot 0=0.
 \end{align*}
 Thus by the Corollary \( P_S(ax+by)=aP_Sx+bP_Sy\), and \(P_S\) is linear. \(\Box\) \\
@@ -792,12 +778,12 @@ Then \(s_1-s_2=t_2-t_1\), with \(s_1-s_2 \in S\) and \( t_2-t_1 \in S^{\perp}\),
 
 \textbf{Proof:} First for any \(a,b \in V\),
 \begin{align*}
-\|a\|^2=\|a-b+b\|^2&=<a-b+b,a-b+b> \\
-&= <a-b,a-b+b>+<b,a-b+b> \\
-&= <a-b,a-b>+2<a-b,b>+<b,b> \\
-&=\|a-b\|^2+\|b\|^2+2<a-b,b>. 
+\|a\|^2=\|a-b+b\|^2&= \langle a-b+b,a-b+b \rangle \\
+&= \langle a-b,a-b+b \rangle + \langle b,a-b+b \rangle \\
+&= \langle a-b,a-b \rangle +2 \langle a-b,b \rangle + \langle b,b \rangle \\
+&=\|a-b\|^2+\|b\|^2+2 \langle a-b,b \rangle. 
 \end{align*}
-Taking \(a=x-y\) and \(b=P_Sx-P_Sy\), Fact 1 and the Corollary imply that \( <a-b,b>=0 \) and thus 
+Taking \(a=x-y\) and \(b=P_Sx-P_Sy\), Fact 1 and the Corollary imply that \( \langle a-b,b \rangle =0 \) and thus 
 \[ \|x-y\|^2 = \|a\|^2=\|a-b\|^2 +\|b\|^2 \ge \|b\|^2=\|P_Sx-P_Sy \|^2.\; \Box \]\\
 
 
@@ -811,7 +797,7 @@ The linear independence of \(\{a_1,\dots,a_n\}\) implies that \(rank(A)=n\), whi
 
 
  We follow up with some
-properties of projection matrices:
+properties of projection matrices $P$:
 
 \begin{enumerate}
 \item P is symmetric and idempotent (what should happen to a vector if
@@ -828,7 +814,7 @@ properties of projection matrices:
   ${\mathbb{R}}^m$, $b$ can be written (uniquely) as the sum of its
   projections onto $S$ and $S^\perp$
 
-\emph{Proof}: Assume $dim(S) = q$, so $dim(S^\perp) = m-q$.  Let $A_S = [a_1 \, a_2 \, ... a_q]$ and $A_{S^\perp} = [a_{q+1} \, ... \, a_m]$ be such that $a_1,...,a_q$ form a basis for $S$ and $a_{q+1}, ..., a_m$ form a basis for $S_\perp$.  By 3, if $P_S$ is the projection onto $col(A_S)$ and $P_{S^\perp}$ is the projection onto $col(A_{S^\perp})$, $\forall b \in  {\mathbb{R}}^m$
+\emph{Proof}: Assume $dim(S) = q$, so $dim(S^\perp) = m-q$.  Let $A_S = [a_1 \, a_2 \, ... a_q]$ and $A_{S^\perp} = [a_{q+1} \, ... \, a_m]$ be such that $a_1,...,a_q$ form a basis for $S$ and $a_{q+1}, ..., a_m$ form a basis for $S^\perp$.  By 2, if $P_S$ is the projection onto $col(A_S)$ and $P_{S^\perp}$ is the projection onto $col(A_{S^\perp})$, $\forall b \in  {\mathbb{R}}^m$
 
 \[P_S (b) + P_{S^\perp} (b) = P_S (b) + (I - P_{S^\perp})b = b. \]
 
@@ -871,29 +857,16 @@ for unique $c_1,...,c_m$. $\Box$
 
 \end{enumerate}
 
-\subsection{Applications to Statistics}
- Suppose we have a linear model, where we model some response as $$y_i
- = x_{i1} \beta_1 + x_{i2} \beta_2 + \ldots + x_{ip} \beta_p +
- \epsilon_i,$$ where $x_{i1}, x_{i2}, \ldots, x_{ip}$ are the values of
- explanatory variables for observation $i$, $\epsilon_i$ is the error
- term for observaion $i$ that has an expected value of 0, and
- $\beta_1, \beta_2, \ldots, \beta_p$ are the coefficients we're
- interested in estimating. Suppose we have $n > p$ observations. Then
- writing the above system in matrix notation we have $Y  = X \beta +
- \epsilon$, where $X$ is the $n \times p$ matrix of explanatory
- variables, $Y$ and $\epsilon$ are $n \times 1$ vectors of observations and
- errors respectively, and $p \times 1$ $\beta$ is what we're
- interested in. We will furthermore assume that the columns of $X$ are
- linearly independent.
+\subsection{Applications to Statistics: Least Squares Estimator}
+ Suppose we have a linear model, where we model some response as 
+ $$y_i = x_{i1} \beta_1 + x_{i2} \beta_2 + \ldots + x_{ip} \beta_p + \epsilon_i,$$ 
+ where $x_{i1}, x_{i2}, \ldots, x_{ip}$ are the values of explanatory variables for observation $i$, $\epsilon_i$ is the error term for observaion $i$ that has an expected value of 0, and $\beta_1, \beta_2, \ldots, \beta_p$ are the coefficients we're interested in estimating. Suppose we have $n > p$ observations. Then writing the above system in matrix notation we have $Y  = X \beta +
+ \epsilon$, where $X$ is the $n \times p$ matrix of explanatory variables, $Y$ and $\epsilon$ are $n \times 1$ vectors of observations and errors respectively, and $p \times 1$ vector $\beta$ is what we're interested in. We will furthermore assume that the columns of $X$ are linearly independent.
 
- Since we don't actually observe the values of the error terms, we
- can't determine the value of $\beta$ and have to estimate it. One
- estimator of $\beta$ that has some nice properties (which you will
- learn about)  is leaste squares estimator (LSE) $\hat{\beta}$
- that minimizes 
+Since we don't actually observe the values of the error terms, we can't determine the value of $\beta$ and have to estimate it. One estimator of $\beta$ that has some nice properties (which you will learn about)  is \textbf{least squares estimator} (LSE) $\hat{\beta}$ that minimizes 
 \[\displaystyle\sum_{i=1}^n {(y_i - \tilde{y_i} )^2},\]
- where $\tilde{y_i}=\displaystyle\sum_{i=1}^p \tilde{\beta_j}x_{ij}$. This is equivilient to minimizing \( \| Y-\tilde{Y}\|^2=\|Y-X\tilde{\beta}\|^2\). It follows that the \textbf{fitted values} associated with the lse satisfy 
-\[ \hat{Y}=\min\limits_{\tilde{Y}\in col(X)} \|Y-\tilde{Y}\|^2\]
+ where $\tilde{y_i}=\displaystyle\sum_{i=1}^p \tilde{\beta_j}x_{ij}$. This is equivalent to minimizing \( \| Y-\tilde{Y}\|^2=\|Y-X\tilde{\beta}\|^2\). It follows that the \textbf{fitted values} associated with the LSE satisfy 
+\[ \hat{Y}=\arg\min\limits_{\tilde{Y}\in col(X)} \|Y-\tilde{Y}\|^2\]
 or that \(\hat{Y} \) is the projection of \(Y\) onto \(col(X)\). It follows then from Fact 4 that the the fitted values and LSE are given by 
 \[ \hat{Y}=X(X'X)^{-1}X'Y=HY \text{    and    } \hat{\beta}=(X'X)^{-1}X'Y.\]
 The matrix $H = X(X'X)^{-1}X'$ is called the \textbf{hat matrix}. It is an orthogonal projection that maps the observed values to the fitted values. The vector of  \textbf{residuals} \(e = Y - \hat{Y} = (I - H) Y\) are orthogonal to \(col(X)\) by the Corollary to the Projection Theorem, and in particular \(e \perp \hat{Y}\). 
@@ -912,22 +885,22 @@ Finally, suppose there's a column $x_j$ in $X$ that is perpendicular to all
  has no effect on estimated coefficients in $\beta$ corresponding to
  the rest of the columns.
  
- Recall that the Projection Theorem and its Corollary are stated in the general setting of Hilbert spaces. One application of these results which uses this generality and arrises in STOR 635 and possibly 654 is the interpretation of conditional expectations as projections. Since this application requires a good deal of material covered in the first semester courses, i.e measure theory and integration, an example of this type will not be given. Instead an example on a simpler class of functions will be given.
+Recall that the Projection Theorem and its Corollary are stated in the general setting of Hilbert spaces. One application of these results which uses this generality and arrises in STOR 635 and possibly 654 is the interpretation of conditional expectations as projections. Since this application requires a good deal of material covered in the first semester courses, i.e measure theory and integration, an example of this type will not be given. Instead an example on a simpler class of functions will be given.
 
-\textbf{Example:} Let \(V=C_{[-1,1]}\) with \(\|f\|^2=<f,f>=\int_{-1}^1 f(x)f(x) dx\). Let \(h(x)=1\), \(g(x)=x\) and \(S=\text{span}\{h,g\}=\{\text{all linear functions}\}\). What we will be interested is calculating \(P_Sf\) where \(f(x)=x^2\).
+\textbf{Example:} Let \(V=C_{[-1,1]}\) with \(\|f\|^2= \langle f,f \rangle=\int_{-1}^1 f(x)f(x) dx\). Let \(h(x)=1\), \(g(x)=x\) and \(S=\text{span}\{h,g\}=\{\text{all linear functions}\}\). What we will be interested is calculating \(P_Sf\) where \(f(x)=x^2\).
 
-From the Corollary we know that \(P_Sf\) is the unique linear function that satisfies \( <f-P_Sf,s>=0\) for all linear functions \(s\in S\). By previous (in class ) exercise finding \(P_Sf\) requires finding constans \(a\) and \(b\) such that
-\[<x^2-(ax+b),1>=0=<x^2-(ax+b),x>\].
+From the Corollary we know that \(P_Sf\) is the unique linear function that satisfies \(\langle f-P_Sf,s \rangle=0\) for all linear functions \(s\in S\). By previous (in class ) exercise finding \(P_Sf\) requires finding constans \(a\) and \(b\) such that
+\[\langle x^2-(ax+b),1 \rangle=0=\langle x^2-(ax+b),x \rangle\].
 First we solve
 \begin{align*}
-0=<x^2-(ax+b),1>&=\int_{-1}^{1} (x^2-ax-b)\cdot 1 \hspace{1mm} dx\\
+0=\langle x^2-(ax+b),1 \rangle&=\int_{-1}^{1} (x^2-ax-b)\cdot 1 \hspace{1mm} dx\\
 &=\left. \left(\frac{x^3}{3}-\frac{ax^2}{2}-bx\right)\right|_{-1}^{1}\\
 &=\left(\frac{1}{3}-\frac{a}{2}-b\right)-\left(\frac{-1}{3}-\frac{a}{2}+b\right)\\
 &=\frac{2}{3}-2b \Rightarrow b=\frac{1}{3}.
 \end{align*}
 Next, 
 \begin{align*}
-0=<x^2-(ax+b),x>&=\int_{-1}^{1} (x^2-ax-b)\cdot x\hspace{1mm} dx\\
+0=\langle x^2-(ax+b),x \rangle &=\int_{-1}^{1} (x^2-ax-b)\cdot x\hspace{1mm} dx\\
 &=\int_{-1}^{1}x^3-ax^2-bx \hspace{1mm}dx\\
 &=\frac{x^4}{4}-\frac{ax^3}{3}-\frac{bx^2}{2}|_{-1}^{1}\\
 &=\left(\frac{1}{4}-\frac{a}{3}-\frac{b}{2}\right)-\left(\frac{1}{4}+\frac{a}{3}-\frac{b}{2}\right)\\
@@ -956,21 +929,17 @@ Prove the following properties of projection matrices:
 \end{enumerate}
 \end{exr}
 
+\begin{exr}{}
+Show that the best least squares fit to a set of measurements $y_1, \cdots, y_m$ by a horizontal line --- in other words, by a constant function $y = C$ --- is their average
+$$C = \frac{y_1 + \cdots + y_m}{m}$$
+In statistical terms, the choice $\bar{y}$ that minimizes the error $E^2 = (y_1 - y)^2 + \cdots + (y_m - y)^2$ is the \textbf{mean} of the sample, and the resulting $E^2$ is the \textbf{variance} $\sigma^2$.
+\end{exr}{}
+
 \clearpage
 \newpage
 \section{Differentiation}
 \subsection{Basics}
-Here we just list the results on taking derivatives of expressions
-with respect to a vector of variables (as opposed to a single
-variable). We start out by defining what that actually means: Let $x =
-\left[ \begin{array} {c} x_1 \\ x_2 \\ \vdots \\ x_k \end{array}
-\right]$ be a vector of variables, and let $f$ be some real-valued
-function of $x$ (for example $f(x) = sin(x_2) + x_4$ or $f(x) =
-{x_1}^{x_7} + x_{11} log(x_3)$). Then we define $\frac{\partial
-  f}{\partial x} = \left[ \begin{array} {c} \frac{\partial f}{\partial
-      x_1} \\ \frac{\partial f}{\partial x_2} \\ \vdots \\
-    \frac{\partial f}{\partial x_k} \end{array} \right]$. Below are
-the extensions
+Here we just list the results on taking derivatives of expressions with respect to a vector of variables (as opposed to a single variable). We start out by defining what that actually means: Let $x = \left[ x_1, x_2, \cdots, x_k\right]'$ be a vector of variables, and let $f$ be some real-valued function of $x$ (for example $f(x) = sin(x_2) + x_4$ or $f(x) = {x_1}^{x_7} + x_{11} log(x_3)$). Then we define $\frac{\partial f}{\partial x} = \left[ \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \cdots, \frac{\partial f}{\partial x_k} \right]'$. Below are the extensions
 
 \begin{enumerate}
 \item Let $a \in \mathbb{R}^k$, and let $y = a'x = a_1 x_1 + a_2 x_2 +
@@ -1012,9 +981,8 @@ Df(x) = \begin{bmatrix}
 \frac{\partial f_m}{\partial x_1} (x) & \cdots & \frac{\partial f_m}{\partial x_n} (x)
 \end{bmatrix}.
 \]
-It is not hard to see that the differential $L$ is exactly  represented by the Jacobian matrix $Df(x)$. Hence, \[
-\lim_{x' \to x, x'\ne x}\frac{f(x')-f(x)-Df(x)(x'-x)}{\|x'-x\|} =0
-\]
+It is not hard to see that the differential $L$ is exactly  represented by the Jacobian matrix $Df(x)$. Hence, 
+$$\lim_{x' \to x, x'\ne x}\frac{f(x')-f(x)-Df(x)(x'-x)}{\|x'-x\|} =0$$
 whenever $f$ is differentiable at $x$.
 
 In particular, if $f$ is of the form $f(x)=Mx + b$, then $Df (x) \equiv M$.
@@ -1027,10 +995,9 @@ In particular, if $f$ is of the form $f(x)=Mx + b$, then $Df (x) \equiv M$.
 
 \vspace{4mm}
 
-Suppose that $f:\Rset^n\to \Rset^m$ and $h:\Rset^k \to \Rset^n$ are two differentiable functions. The \emph{chain rule of differentiability} says that the function $g$ defined by $g(x) =f( h(x))$ is also differentiable, with
-\[
-D g(x) = Df(h(x)) Dh(x).
-\]
+Suppose that $f:\Rset^n\to \Rset^m$ and $h:\Rset^k \to \Rset^n$ are two differentiable functions. The \textbf{chain rule of differentiability} says that the function $g$ defined by $g(x) =f( h(x))$ is also differentiable, with
+$$D g(x) = Df(h(x)) Dh(x).$$
+
 For the case $k=m=1$, where $h$ is from $\Rset$ to $\Rset^n$ and $f$ is from $\Rset^n$ to $\Rset$, the equation above becomes
 \[
 g'(x)= Df(h(x)) D h(x) = \ip{\nabla f(h(x))}{Dh(x)} = \sum_{i=1}^n \partial_i f (h(x)) h'_i(x)
@@ -1053,13 +1020,10 @@ Taking transposes on both sides, we get
 \noindent
 \textbf{Example 1}. Let $f: \Rset^n \to \Rset$ be a differentiable function. Let $x^* \in \Rset^n$ and $d \in \Rset^n$ be fixed.
     Define a function $g:\Rset \to \Rset$ by $g(t) = f(x^* + t d)$. If we write $h(t)=x^*+td$, then $g(t)=f(h(t))$. We have
-    \[
-    g'(t)= \ip{\nabla f(x^*+td)}{ Dh(t)}=\ip{\nabla f(x^*+td)}{d}.
-    \]
+    $$g'(t)= \ip{\nabla f(x^*+td)}{ Dh(t)}=\ip{\nabla f(x^*+td)}{d}.$$
+    
     In particular,
-    \[
-    g'(0)= \ip{\nabla f(x^*)}{d}.
-    \]
+    $$g'(0)= \ip{\nabla f(x^*)}{d}.$$
 
 %    Or
 %    \[
@@ -1121,56 +1085,52 @@ The \textbf{inverse function theorem} states that for a function $f: \mathbb{R}^
 
 \clearpage
 \newpage
+
+
 \section{Matrix Decompositions}
 We will assume that you are familiar with $LU$ and $QR$ matrix
 decompositions. If you are not, you should look them up, they are easy
 to master. We will in this section restrict ourselves to
 eigenvalue-preserving decompositions.
 \subsection{Determinants}
-We will assume that you are familiar with the idea of determinants,
-and specifically calculating determinants by the method of cofactor
-expansion along a row or a column of a square matrix. Below we list
-the properties of determinants of real square matrices. The first 3
-properties are defining, and the rest are established from those 3.
+Often in mathematics it is useful to summarize a multivariate phenomenon with a single number, and the determinant is an example of this. It is only defined for square matrices. We will assume that you are familiar with the idea of determinants,
+and specifically calculating determinants by the method of cofactor expansion along a row or a column of a square matrix. Below we list the properties of determinants of real square matrices. The first 3 properties are defining, and the rest are established from those three properties. In fact, the operation on square matrices which satisfies the first 3 properties must be a determinant.
 \begin{enumerate}
 \item det$(A)$ depends linearly on the first row. \\ det$\left[
-    \begin{array} {l c c r} a_{11} + a_{11}' & a_{12} + a_{12}' &
-      \ldots & a_{1n} + a_{1n}' \\ a_{21} & a_{22} & \ldots & a_{2n} \\
+    \begin{array} {l c c r} r a_{11} + s a_{11}' & r a_{12} + s a_{12}' &
+      \ldots & r a_{1n} + s a_{1n}' \\ a_{21} & a_{22} & \ldots & a_{2n} \\
       \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \ldots &
       a_{nn} \end{array} \right]$ = \\
 
-det$\left[ \begin{array} {l c c r}
+r det$\left[ \begin{array} {l c c r}
       a_{11} & a_{12} & \ldots & a_{1n} \\ a_{21} & a_{22} & \ldots &
       a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} &
-      \ldots & a_{nn} \end{array} \right]$ + det$\left[ \begin{array} {l c c r}
+      \ldots & a_{nn} \end{array} \right]$ + s det$\left[ \begin{array} {l c c r}
       a_{11}' & a_{12}' & \ldots & a_{1n}' \\ a_{21} & a_{22} & \ldots &
       a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} &
       \ldots & a_{nn} \end{array} \right]$.\\
 
-det$\left[ \begin{array} {l c c r}
-      r a_{11} & r a_{12} & \ldots & r a_{1n} \\ a_{21} & a_{22} & \ldots &
-      a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} &
-      \ldots & a_{nn} \end{array} \right]$ = $r$ det$\left[
-      \begin{array} {l c c r}  a_{11} & a_{12} & \ldots & a_{1n} \\
-      a_{21} & a_{22} & \ldots & a_{2n} \\ \vdots & \vdots & \ddots &
-      \vdots \\ a_{n1} & a_{n2} & \ldots & a_{nn} \end{array} \right]$
+
 \item Determinant changes sign when two rows are exchanged. This also
   implies that the determinant depends linearly on EVERY row, since we
   can exhange row$i$ with row 1, split the determinant, and exchange
   the rows back, restoring the original sign.
 \item det$(I)$ = 1
+
 \item If two rows of $A$ are equal, det$(A)$ = 0 (why?)
+
 \item Subtracting a multiple of one row from another leaves
   determinant unchanged.
 
-  \emph{Proof}: Suppose instead of row $i$ we now have
-  row $i - r j$. Then splitting the determinant of the new matrix
-  along this row we have det(original) + det(original matrix with row
-  $rj$ in place of row $i$. That last determinant is just $r$ times
-  determinant of original matrxi with row $j$ in place of row $i$, and
-  since the matrix has two equal rows, the determinant is 0. So the determinant of the new matrix has to be equal to the determinant of the original. $\Box$
+  \emph{Proof}: Suppose $A = \left[ a'_1, \cdots, a'_i, \cdots, a'_j, \cdots, a'_n \right]', \tilde{A} = \left[ a'_1, \cdots, a'_i - r a'_j, \cdots, a'_j, \cdots, a'_n \right]'$.
+  
+  Then, $$\begin{aligned}\text{det}(\tilde{A}) &= \text{det}(\left[ a'_1, \cdots, a'_i, \cdots, a'_j, \cdots, a'_n \right]') - r \text{det}\left[ a'_1, \cdots, a'_j, \cdots, a'_j, \cdots, a'_n \right]'\\
+  &= \text{det}(A) + 0 = \text{det}(A)
+  \end{aligned}$$
+$\Box$
 
 \item If a matrix has a zero row, its determinant is 0. (why?)
+
 \item If a matrix is triangular, its determinant is the product of
   entries on main diagonal
 
@@ -1178,14 +1138,14 @@ det$\left[ \begin{array} {l c c r}
 
 \item det$(A)$ = 0 iff $A$ is not invertible (proof involves ideas of
   elimination)
-\item det$(AB) = $ det$(A)$det$(B)$. In particular det$(A^{-1})$ =
+\item det$(AB) = $ det$(A)$det$(B)$. In particular, if $A$ is inversible, det$(A^{-1})$ =
   $\frac{1}{det(A)}$.
 
 \emph{Proof}: Suppose det$(B)$ = 0. Then
   $B$ is not invertible, and $AB$ is not invertible (recall $(AB)^{-1} = B^{-1}A^{-1}$, therefore det$(AB)$ = 0. If det$(B) \neq 0$, let $d(A) =
   \frac{det(AB)}{det(B)}$. Then,
 \begin{enumerate}[(1)]
-	\item For $A_*=[a^*_{11} \, a^*_{12} \, ... \, a^*_{1n}] \in \mathbb{R}^n$ let $A_i$ be the \(i^{\text{\tiny{th}}}\) row of A,  \(r \in \mathbb{R}\), and \(A^*\)  be the matrix \(A\) but with its first row replaced with \(A_*\).  Then,
+	\item For $A_*=[a^*_{11},  a^*_{12} , \cdots , a^*_{1n}] \in \mathbb{R}^n$, let $A_i$ be the \(i^{\text{\tiny{th}}}\) row of A,  \(r \in \mathbb{R}\), and \(A^*\)  be the matrix \(A\) but with its first row replaced with \(A_*\).  Then,
 
 
 \begin{align*}
@@ -1204,13 +1164,10 @@ $$
 d(A^{i,j})
 =\frac{det \left( \left[  \begin{array}{c} A_1 \\ \vdots \\ A_j \\ \vdots \\ A_i \\ \vdots \\ A_n \end{array} \right]B \right) }{det(B)}  
 =\frac{ det \left( \left[  \begin{array}{c} A_1B \\ \vdots \\ A_jB \\ \vdots \\ A_iB \\ \vdots \\ A_nB \end{array} \right] \right)  }{det(B)}  
-=\frac{det\left( (AB)^{i,j}\right)}{det(B)}=\frac{-det(AB)}{det(b)}=-d(A).
+=\frac{det\left( (AB)^{i,j}\right)}{det(B)}=\frac{-det(AB)}{det(B)}=-d(A).
 $$
 
-
-
-
-   \item $d(I) = det(IB)/det(B) = det(B)/det(B) = 1$.
+\item $d(I) = det(IB)/det(B) = det(B)/det(B) = 1$.
 \end{enumerate}
 So conditions 1-3 are satisfied and therefore $d(A) = det(A)$. $\Box$
 
@@ -1219,30 +1176,20 @@ So conditions 1-3 are satisfied and therefore $d(A) = det(A)$. $\Box$
 \item det$(A')$ = det$(A)$. This is true since expanding along the row
   of $A'$ is the same as expanding along the corresponding column of $A$.
 \end{enumerate}
+
+
 \subsection{Eigenvalues and Eigenvectors}
+\paragraph{Eigenvalues and Eigenvectors}
 Given a square $n \times n$ matrix $A$, we say that $\lambda$ is an
 \textbf{eigenvalue} of $A$, if for some non-zero $x \in {\mathbb{R}}^n$
 we have $Ax = \lambda x$. We then say that $x$ is an
 \textbf{eigenvector} of $A$, with corresponding eigenvalue
 $\lambda$. For small $n$, we find eigenvalues by noticing that $$Ax =
 \lambda x \Longleftrightarrow (A - \lambda I)x = 0
-\Longleftrightarrow A - \lambda I$$ is not invertible
-$\Longleftrightarrow$ det$(A - \lambda I) = 0$. We then write out the
-formula for the determinant (which will be a polynomial of degree $n$
-in $\lambda$) and solve it. Every $n \times n$ $A$ then has $n$
-eigenvalues (possibly repeated and/or complex), since every polynomial
-of degree $n$ has n roots. Eigenvectors for a specific value of
-$\lambda$ are found by calculating the basis for nullspace of $A -
-\lambda I$ via standard elimination techniques. If $n \geq 5$, there's
-a theorem in algebra that states that no formulaic expression for the
-roots of the polynomial of degree $n$ exists, so other techniques are
-used, which we will not be covering. Also, you should be able to see
-that the eigenvalues of $A$ and $A'$ are the same (why? Do the
-eigenvectors have to be the same?), and that if $x$ is an eigenvector
-of $A$ ($Ax = \lambda x$), then so is every multiple $r x$ of $x$,
-with same eigenvalue $(Arx = \lambda r x)$. In particular, a unit
-vector in the direction of $x$ is an eigenvector.\\
-
+\Longleftrightarrow A - \lambda I \text{ is not invertible}
+\Longleftrightarrow \text{det}(A - \lambda I) = 0$$
+We then write out the formula for the determinant (which will be a polynomial of degree $n$ in $\lambda$) and solve it. Every $n \times n$ $A$ then has $n$ eigenvalues (possibly repeated and/or complex), since every polynomial of degree $n$ has n roots. Eigenvectors for a specific value of $\lambda$ are found by calculating the basis for nullspace of $A - \lambda I$ via standard elimination techniques. If $n \geq 5$, there's a theorem in algebra that states that no formulaic expression for the roots of the polynomial of degree $n$ exists, so other techniques are used, which we will not be covering. Also, you should be able to see that the eigenvalues of $A$ and $A'$ are the same (why? Do the eigenvectors have to be the same?), and that if $x$ is an eigenvector of $A$ ($Ax = \lambda x$), then so is every multiple $r x$ of $x$, with same eigenvalue $(Arx = \lambda r x)$. In particular, a unit vector in the direction of $x$ is an eigenvector.
+\\~\\
 \textbf{Theorem}: Eigenvectors corresponding to distinct eigenvalues
 are linearly independent.\\
 
@@ -1254,12 +1201,13 @@ $\lambda_1 r_1 x_1 + \lambda_2 r_2 x_2 = 0$. Multiplying first
 equation by $\lambda_1$ and subtracting it from the second, we get
 $\lambda_1 r_1 x_1 + \lambda_2 r_2 x_2 - (\lambda_1 r_1 x_1 + \lambda_1
 r_2 x_2) = 0 - 0 = 0$ $\Longrightarrow$ $r_2 (\lambda_2 - \lambda_1)
-x_2 = 0$ and since $x_1 \neq 0$, and $\lambda_1 \neq \lambda_2$, we
+x_2 = 0$ and since $x_2 \neq 0$, and $\lambda_1 \neq \lambda_2$, we
 conclude that $r_2 = 0$. Similarly, $r_1 = 0$ as well, and we conclude
 that $x_1$ and $x_2$ are in fact linearly independent. The proof
 extends to more than 2 eigenvalues by induction. $\Box$
 \\
 
+\paragraph{Diagonalizable}
 We say that $n \times n$ $A$ is \textbf{diagonalizable} if it has $n$
 linearly independent eigenvectors. Certainly, every matrix that has
 $n$ DISTINCT eigenvalues is diagonalizable (by the proof above), but
@@ -1324,39 +1272,13 @@ We finally note that there's no relationship between being
     diagonalizable (check this too).
 
 \subsection{Complex Matrices and Basic Results}
-We now allow complex entries in vectors and matrices. Scalar
-multiplicaiton now also allows multiplication by complex numbers, so
-we're going to be dealing with vectors in ${\mathbb{C}}^n$, and you
-should check for yourself that dim$({\mathbb{C}}^n)$ =
-dim$({\mathbb{R}}^n)$ = $n$ (Is $\mathbb{R}^n$ a subspace of
-$\mathbb{C}^n$?) We also note that we need to tweak a bit the earlier
-definition of transpose to account for the fact that if $x = \left[
-  \begin{array} {c} 1 \\ i \end{array} \right] \in {\mathbb{C}}^2$,
-then $$x'x = 1 + i^2 = 0 \neq 1 = \|x\|^2.$$ We note that in the complex
-case $\|x\|^2 = (\bar{x})'x$, where $\bar{x}$ is the complex conjugate
-of $x$, and we introduce the notation $x^H$ to denote the
-transpose-conjugate $\bar{x}'$ (thus we have $x^H x = \|x\|^2$). You
-can easily see for yourself that if $x \in \mathbb{R}^n$, then $x^H =
-x'$. $A^H = (\bar{A})'$ for $n \times n$ matrix $A$ is defined
-similarly and we call $A^H$ \textbf{Hermitian transpose} of $A$. You
-should check that $(A^H)^H = A$ and  that $(AB)^H = B^H A^H$ (you might want to
-use the fact that for complex numbers $x, y \in \mathbb{C}$, $\overline{x +
-  y} = \bar{x} + \bar{y}$ and $\overline{x y} = \bar{x} \bar{y}$).  We say
-that $x$ and $y$ in $\mathbb{C}^n$ are orthogonal if $x^H y = 0$ (note
-that this implies that $y^H x = 0$, although it is NOT true in general
-that $x^H y = y^H x$).
+\paragraph{Complex Matrix}
+We now allow complex entries in vectors and matrices. Scalar multiplicaiton now also allows multiplication by complex numbers, so we're going to be dealing with vectors in ${\mathbb{C}}^n$, and you should check for yourself that dim$({\mathbb{C}}^n)$ = dim$({\mathbb{R}}^n)$ = $n$ (Is $\mathbb{R}^n$ a subspace of $\mathbb{C}^n$?) We also note that we need to tweak a bit the earlier definition of transpose to account for the fact that if $x = \left[1, i \right] '\in {\mathbb{C}}^2$, then 
+$$x'x = 1 + i^2 = 0 \neq 2 = \|x\|^2.$$ 
+We note that in the complex case $\|x\|^2 = (\bar{x})'x$, where $\bar{x}$ is the complex conjugate of $x$, and we introduce the notation $x^H$ to denote the transpose-conjugate $\bar{x}'$ (thus we have $x^H x = \|x\|^2$). You can easily see for yourself that if $x \in \mathbb{R}^n$, then $x^H = x'$. $A^H = (\bar{A})'$ for $n \times n$ matrix $A$ is defined similarly and we call $A^H$ \textbf{Hermitian transpose} of $A$. You should check that $(A^H)^H = A$ and  that $(AB)^H = B^H A^H$ (you might want to use the fact that for complex numbers $x, y \in \mathbb{C}$, $\overline{x +  y} = \bar{x} + \bar{y}$ and $\overline{x y} = \bar{x} \bar{y}$). We say that $x$ and $y$ in $\mathbb{C}^n$ are orthogonal if $x^H y = 0$ (note that this implies that $y^H x = 0$, although it is NOT true in general that $x^H y = y^H x$).
 
-We say that $n \times n$ matrix $A$ is \textbf{Hermitian} if $A =
-A^H$. We say that $n \times n$ $A$ is \textbf{unitary} if $A^H A = A
-A^H = I (A^H = A^{-1})$. You should check for yourself that every
-symmetric real matrix is  Hermitian, and every orthogonal real matrix
-is unitary. We say that a square matrix $A$ is \textbf{normal} if it
-commutes with its Hermitian transpose: $A^H A = A A^H$. You should
-check for yourself that Hermitian (and therefore symmetric) and
-unitary (and therefore orthogonal) matrices are normal.  We next
-present some very important results about Hermitian and unitary
-matrices (which also include as special cases symmetric and orthogonal
-matrices respectively):
+\paragraph{Hermitian}
+We say that $n \times n$ matrix $A$ is \textbf{Hermitian} if $A = A^H$. We say that $n \times n$ $A$ is \textbf{unitary} if $A^H A = A A^H = I (A^H = A^{-1})$. You should check for yourself that every symmetric real matrix is  Hermitian, and every orthogonal real matrix is unitary. We say that a square matrix $A$ is \textbf{normal} if it commutes with its Hermitian transpose: $A^H A = A A^H$. You should check for yourself that Hermitian (and therefore symmetric) and unitary (and therefore orthogonal) matrices are normal.  We next present some very important results about Hermitian and unitary matrices (which also include as special cases symmetric and orthogonal matrices respectively):
 \begin{enumerate}
 \item If $A$ is Hermitian, then $\forall x \in \mathbb{C}^n$, $y = x^H A x
   \in \mathbb{R}$.
@@ -1535,7 +1457,9 @@ There is another way to think about the result of the Spectral
 $m \times n$ pseudo-diagonal (meaning that that the first $r$
 diagonal entries $\sigma_{ii}$ are non-zero and the rest of the matrix
 entries are zero, where $r = rank(A)$), and $Q_2$ is $n \times n$
-orthogonal. Moreover, the first $r$ columns of $Q_1$ form an
+orthogonal. 
+
+\noindent \textbf{Remark:} The first $r$ columns of $Q_1$ form an
 orthonormal basis for $col(A)$, the last $m-r$ columns of $Q_1$ form
 an orthonormal basis for $N(A')$, the first $r$ columns of $Q_2$ form
 an orthonormal basis for $col(A')$, last $n-r$ columns of $Q_2$ form
@@ -1561,32 +1485,16 @@ space of $A$. Now set $\sigma_{ii} = \sqrt{\lambda_i}$ for $1 \leq i
 are orthonormal ($q_i ' q_j = 0$ if $i \neq j$, and $q_i' q_i =
 1$). By Gram-Schmidt, we can extend the set $q_1, q_2, \ldots, q_r$ to
 a complete orthonormal basis for $\mathbb{R}^m$, $q_1, q_2, \ldots,
-q_r, q_{r+1}, \ldots, q_n$. As $q_1, q_2, \ldots, q_r$ are each in the column space of $A$ and linearly independent, they form an orthonormal basis for column space of $A$ and therefore $q_{r+1}, q_{r+2}, \ldots, q_n$ form an orthonormal
+q_r, q_{r+1}, \ldots, q_m$. As $q_1, q_2, \ldots, q_r$ are each in the column space of $A$ and linearly independent, they form an orthonormal basis for column space of $A$ and therefore $q_{r+1}, q_{r+2}, \ldots, q_m$ form an orthonormal
 basis for the left nullspace of $A$. We now verify that $A = Q_1 \Sigma
 Q_2 '$ by checking that $Q_1' A Q_2 = \Sigma$. Consider $ij$-th entry
 of $Q_1 ' A Q_2$. It is equal to $q_i ' Ax_j$. For $j > r$,
 $Ax_j = 0$ (why?), and for $j \leq r$ the expresison becomes $q_i '
-\sigma_{jj} q_j = \sigma_{jj} q_i ' q_j = 0$(if $i \neq j)$ or $1$ (if
+\sigma_{jj} q_j = \sigma_{jj} q_i ' q_j = 0$(if $i \neq j)$ or $\sigma_{ii}$ (if
 $i = j$). And therefore $Q_1 ' A Q_2 = \Sigma$, as claimed. $\Box$\\
 
 
-One important application of this decomposition is in estimating
-$\beta$ in the system we had before when the columns of $X$ are
-linearly dependent. Then $X'X$ is not invertible, and more than one
-value of $\hat{\beta}$ will result in $X'(Y-X \hat{\beta}) = 0$. By
-convention, in cases like this, we choose $\hat{\beta}$ that has the
-smallest length. For example, if both $\left[ \begin{array} {c} 1 \\ 1
-    \\ 1 \end{array} \right]$ and $\left[ \begin{array} {c} 1 \\ 1
-    \\ 0 \end{array} \right]$ satisfy the normal equations, then we'll choose
-  the latter and not the former. This optimal value of $\hat{\beta}$ is
-  given by $\hat{\beta} = X^+ Y$, where $X^+$ is a $p \times n$ matrix
-  defined as follows: suppose $X$ has rank $r < p$ and it has
-  S.V.D. $Q_1 \Sigma Q_2 '$. Then $X^+ = Q_2 \Sigma^+ Q_1'$, where
-  $\Sigma^+$ is $p \times n$ matrix s.t. for $1 \leq i \leq r$
-  we let ${\sigma^+}_{ii} = 1/{\sigma_{ii}}$ and ${\sigma^+}_{ij} = 0$
-  otherwise. We will not prove this fact, but the proof can be found
-  (among other places) in appendix 1 of Strang's book. The matrix $X^+ $ is called the \textbf{pseudo-inverse} of the matrix $X$. 
-  The pseudo-inverse is defined and unique for all matrices whose entries are real or complex numbers. 
+One important application of this decomposition is in estimating $\beta$ in the system we had before when the columns of $X$ are linearly dependent. Then $X'X$ is not invertible, and more than one value of $\hat{\beta}$ will result in $X'(Y-X \hat{\beta}) = 0$. By convention, in cases like this, we choose $\hat{\beta}$ that has the smallest length. For example, if both $\left[ 1, 1, 1 \right]'$ and $\left[ 1, 1, 0 \right]'$ satisfy the normal equations, then we'll choose the latter and not the former. This optimal value of $\hat{\beta}$ is given by $\hat{\beta} = X^+ Y$, where $X^+$ is a $p \times n$ matrix defined as follows: suppose $X$ has rank $r < p$ and it has SVD: $Q_1 \Sigma Q_2 '$. Then $X^+ = Q_2 \Sigma^+ Q_1'$, where $\Sigma^+$ is $p \times n$ matrix s.t. for $1 \leq i \leq r$ we let ${\sigma^+}_{ii} = 1/{\sigma_{ii}}$ and ${\sigma^+}_{ij} = 0$ otherwise. We will not prove this fact, but the proof can be found (among other places) in appendix 1 of Strang's book. The matrix $X^+ $ is called the \textbf{pseudo-inverse} of the matrix $X$. The pseudo-inverse is defined and unique for all matrices whose entries are real or complex numbers. 
 
 \subsection*{Exercises}
 \addcontentsline{toc}{subsection}{Exercises}
@@ -1617,66 +1525,69 @@ Show that if $A$ is idempotent, and $\lambda$ is an
 
 \clearpage
 \newpage
+
 \section{Statistics: Random Variables}
 This sections covers some basic properties of random variables.  While this material is not necessarily tied directly to linear algebra, it is essential background for graduate level Statistics, O.R., and Biostatistics.  For further review of these concepts, see Casella and Berger, sections 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 4.1, 4.2, 4.5, and 4.6.
 
 Much of this section is gratefully adapted from Andrew Nobel's lecture notes.
 
 \subsection{Expectation, Variance and Covariance}
+\paragraph{Expectation}
 The \textbf{expected value} of a continuous random variable $X$, with probability density function $f$, is defined by
-\[EX = \int_{-\infty}^{\infty} x f(x) dx. \]
+\[\mathbb{E}X = \int_{-\infty}^{\infty} x f(x) dx. \]
 The expected value of a discrete random variable $X$, with probability mass function $p$, is defined by
-\[EX = \sum_{x \in \mathbb{R}, p(x) \neq 0} x p(x).\]
-The expected value is \textbf{well-defined} if $E|X| < \infty$. \\
+\[\mathbb{E}X = \sum_{x \in \mathbb{R}, p(x) \neq 0} x p(x).\]
+The expected value is \textbf{well-defined} if $\mathbb{E}|X| < \infty$. \\
 
 \noindent We now list some basic properties of $E(\cdot)$:
 \begin{enumerate}
-\item  $X \leq Y$ imples $EX \leq EY$
+\item  $X \leq Y$ imples $\mathbb{E}X \leq \mathbb{E}Y$
 
 \emph{Proof:}  Follows directly from properties of $\int$ and $\sum$.
 
-\item For $a,b \in \mathbb{R}$, $E(aX + bY) = a EX + b EY$.
+\item For $a,b \in \mathbb{R}$, $\mathbb{E}(aX + bY) = a \mathbb{E}X + b \mathbb{E}Y$.
 
 \emph{Proof:}  Follows directly from properties of $\int$ and $\sum$.
 
-\item $|EX| \leq E|X|$
+\item $|\mathbb{E}X| \leq \mathbb{E}|X|$
 
-\emph{Proof:} Note that $X, -X \leq |X|$.  Hence, $EX, -EX \leq E|X|$ and therefore $|EX| \leq E|X|$. $\Box$
+\emph{Proof:} Note that $X, -X \leq |X|$.  Hence, $\mathbb{E}X, -\mathbb{E}X \leq \mathbb{E}|X|$ and therefore $|\mathbb{E}X| \leq \mathbb{E}|X|$. $\Box$
 
-\item If $X$ and $Y$ are independent ($X \coprod Y$), then $E(XY) = EX \cdot EY$.
+\item If $X$ and $Y$ are independent ($X \perp Y$), then $\mathbb{E}(XY) = \mathbb{E}X \cdot \mathbb{E}Y$.
 
 \emph{Proof:} See Theorem 4.2.10 in Casella and Berger.
 
 \item If $X$ is a non-negative continuous random variable, then
- $$EX = \int_0^\infty P(X \geq t) dt = \int_0^\infty (1-F(t)) dt.$$
+ $$\mathbb{E}X = \int_0^\infty P(X \geq t) dt = \int_0^\infty (1-F(t)) dt.$$
 
 \emph{Proof:} Suppose $X \sim f$.  Then,
 \begin{eqnarray*} \int_0^\infty P(X>t) dt &=& \int_0^\infty [\int_t^\infty f(x) dx] dt \\
 	&=& \int_0^\infty [ \int_0^\infty f(x) I(x>t) dx] dt \\
 	&=&  \int_0^\infty \int_0^\infty f(x) I(x>t) dt dx \hspace{12 pt} \mbox{(Fubini)} \\
 	&=& \int_0^\infty f(x) [ \int_0^\infty I(x>t) dt] dx \\
-	&=& \int_0^\infty x f(x) dx = EX \hspace{70 pt}\Box \end{eqnarray*}
+	&=& \int_0^\infty x f(x) dx = \mathbb{E}X \hspace{70 pt}\Box \end{eqnarray*}
 	
-\item If $X \sim f$ then $Eg(X) = \int g(x) f(x) dx$. \\
-If $X \sim p$ then $Eg(x)  = \underset{x}{\sum} g(x) p(x) $.
+\item If $X \sim f$, then $\mathbb{E}g(X) = \int g(x) f(x) dx$. \\
+If $X \sim p$, then $\mathbb{E}g(X)  = \underset{x}{\sum} g(x) p(x) $.
 	
 \emph{Proof:} Follows from definition of $Eg(X)$.
 \end{enumerate}
 
-\noindent The \textbf{variance} of a random variable $X$ is defined by
-\begin{eqnarray*} \mbox{Var}(X) &=& E(X-EX)^2 \\ &=& EX^2 - (EX)^2 . \end{eqnarray*}
-Note that $\mbox{Var}(X)$ is finite (and therefore well-defined) if $EX^2 < \infty$.
+\paragraph{Variance and Corvariance}
+The \textbf{variance} of a random variable $X$ is defined by
+\begin{eqnarray*} \mbox{Var}(X) &=& \mathbb{E}(X-\mathbb{E}X)^2 \\ &=& \mathbb{E}X^2 - (\mathbb{E}X)^2 . \end{eqnarray*}
+Note that $\mbox{Var}(X)$ is finite (and therefore well-defined) if $\mathbb{E}X^2 < \infty$.
 The \textbf{covariance} of two random variables $X$ and $Y$ is defined by
-\begin{eqnarray*} \mbox{Cov}(X,Y) &=& E[(X-EX)(Y-EY)] \\ &=& E(XY) - EXEY. \end{eqnarray*}
-Note that $\mbox{Cov}(X,Y) $ is finite if $EX^2, EY^2 < \infty$. \\
+\begin{eqnarray*} \mbox{Cov}(X,Y) &=& \mathbb{E}[(X- \mathbb{E}X)(Y - \mathbb{E}Y)] \\ &=& \mathbb{E}(XY) - \mathbb{E}X \mathbb{E}Y. \end{eqnarray*}
+Note that $\mbox{Cov}(X,Y) $ is finite if $ \mathbb{E}X^2,  \mathbb{E}Y^2 < \infty$. \\
 
 \noindent We now list some general properties, that follow from the definition of variance and covariance:
 \begin{enumerate}
 \item $\mbox{Var}(X) \geq 0$, with ``$=$'' iff $X$ is constant with probability 1.
 \item For $a,b \in \mathbb{R}$, $\mbox{Var}(aX+b) = a^2 \mbox{Var}(X$).
-\item If $X \coprod Y$, then $\mbox{Cov}(X,Y) = 0$.  The converse, however, is not true in general.
+\item If $X \perp Y$, then $\mbox{Cov}(X,Y) = 0$.  The converse, however, is not true in general.
 \item $\mbox{Cov}(aX +b,cY+d) = ac \mbox{Cov}(X,Y)$.
-\item If $X_1,\hdots,X_n$ satisfy $EX_i^2 < \infty$, then
+\item If $X_1,\hdots,X_n$ satisfy $ \mathbb{E}X_i^2 < \infty$, then
 \[\mbox{Var}(\displaystyle\sum\limits_{i=1}^n X_i) = \displaystyle\sum\limits_{i=1}^n \mbox{Var}(X_i) + 2 \displaystyle\sum\limits_{i<j} \mbox{Cov}(X_i,X_j).\]
 \end{enumerate}
 
@@ -1684,8 +1595,7 @@ Note that $\mbox{Cov}(X,Y) $ is finite if $EX^2, EY^2 < \infty$. \\
 
 Here we describe various methods to calculate the distribution of a function of one or more random variables. \\
 
-\noindent \emph{CDF method}\\
-
+\paragraph{CDF method}
  For the single variable case, given $X \sim f_X$ and $g: \mathbb{R} \rightarrow \mathbb{R}$ we would like to find the density of $Y=g(X)$, if it exists.  A straightforward approach is the \textbf{CDF method}:
 \begin{itemize}
 \item Find $F_Y$ in terms of $F_X$
@@ -1705,8 +1615,7 @@ If $a<0$, a similar argument shows $f_Y(y) = |a|^{-1} f(\frac{y-b}{a})$.  \\
 \begin{eqnarray*}  F_Z (z) &=& P(Z \leq z) = P(X^2 \leq z) = P(-\sqrt{z} \leq X \leq \sqrt{z}) \\ &=& \Phi(\sqrt{z}) - \Phi(-\sqrt{z}) = 1-2\Phi(-\sqrt{z}). \end{eqnarray*}
 Thus, $f_Z(z) = z^{-1/2} \phi (-\sqrt{z}) = \frac{1}{\sqrt{2 \pi}} z^{-1/2} e^{-z/2}$. \\
 
-\noindent \emph{Convolutions}\\
-
+\paragraph{Convolutions}
 The \textbf{convolution} $f=f_1 \ast f_2$ of two densities $f_1$ and $f_2$ is defined by \[f(x) = \int_{-\infty}^{\infty} f_1(x-y)f_2(y)dy.\]
 Note that $f(x) \geq 0$, and
 \begin{align*}
@@ -1735,10 +1644,7 @@ f_1 \ast f_2 &= f_2 \ast f_1 \\
 \end{align*}
 
 
-
-
-\noindent \emph{Change of Variables}\\
-
+\paragraph{Change of Variables}
 We now consider functions of more than one random variable.  In particular, let $U,V$ be open subsets in $\mathbb{R}^k$, and $H: U \rightarrow V$.  Then, if $\vec{x}$ is a vector in $U$,  \[ H(\vec{x}) = (h_1(\vec{x}) , \hdots,h_k(\vec{x}))^t. \]
 is a vector in $V$.  The functions $h_1(\cdot), \hdots,h_k(\cdot)$ are the \textbf{coordinate functions} of $H$.  If $\vec{X}$ is a continuous random vector, we would like to find the density of $H(\vec{X})$. First, some further assumptions:
 
@@ -1782,14 +1688,12 @@ So, both $Y_1$ and $Y_2$ are $\mathbb{N}(0,2)$, and they are independent!
 
 \subsection{Derivation of Common Univariate Distributions}
 
-\noindent \emph{Double Exponential} \\
-
-If $X_1, X_2 \sim \mbox{Exp} (\lambda)$ and $X_1 \coprod X_2$, then $X_1 - X_2$ has a \textbf{double exponential} (or \textbf{Laplace}) distribution:  $X_1 - X_2 \sim \mbox{DE}(\lambda)$.  The density of $\mbox{DE}(\lambda)$,
+\paragraph{Double Exponential} 
+If $X_1, X_2 \sim \mbox{Exp} (\lambda)$ and $X_1 \perp X_2$, then $X_1 - X_2$ has a \textbf{double exponential} (or \textbf{Laplace}) distribution:  $X_1 - X_2 \sim \mbox{DE}(\lambda)$.  The density of $\mbox{DE}(\lambda)$,
 \[f(x) = \frac{\lambda}{2} e^{-\lambda |x|} \hspace{20 pt} -\infty < x < \infty ,\]
 can be derived through the convolution formula. \\
 
-\noindent \emph{Gamma and Beta Distributions}\\
-
+\paragraph{Gamma and Beta Distributions}
 The \textbf{gamma function}, a component in several probability distributions,  is defined by \[\Gamma (t)  = \int_0^\infty x^{t-1}e^{-x} dx, \hspace{20 pt} t > 0.\]
 Here are some basic properties of $\Gamma(\cdot):$
 \begin{enumerate}
@@ -1822,7 +1726,7 @@ So, $\beta$ acts as a scale parameter of the $\Gamma(\alpha, \cdot)$ family.  Th
 \item If $\alpha > 1$, then $g_{\alpha, \beta} (\cdot)$ is unimodal, with maximum at $x = \frac{\alpha-1}{\beta}$.
 \end{itemize}
 
-\noindent If $X \sim \Gamma(\alpha, \beta)$, then $EX = \frac{\alpha}{\beta}$, $\mbox{Var}(X) = \frac{\alpha}{\beta^2}$ .
+\noindent If $X \sim \Gamma(\alpha, \beta)$, then $\mathbb{E}X = \frac{\alpha}{\beta}$, $\mbox{Var}(X) = \frac{\alpha}{\beta^2}$ .
 
 We now use convolutions to show that if $X \sim \Gamma(\alpha_1,\beta), Y\sim \Gamma(\alpha_2,\beta)$ are independent then $X+Y \sim \Gamma(\alpha_1+\alpha_2,\beta)$: \\
 
@@ -1838,7 +1742,7 @@ We now use convolutions to show that if $X \sim \Gamma(\alpha_1,\beta), Y\sim \G
 Thus, $f(x)$ and $g_{\alpha_1+\alpha_2, \beta}(x)$ agree up to constants.  As both integrate to 1, they are the same function. $\Box$\\
 
 \noindent \textbf{Corollary:}  Note if $\alpha = 1$, then $\Gamma (1,\beta) = \mbox{Exp} (\beta)$.  Hence, If $X_1,\hdots,X_n$ are iid $\sim \mbox{Exp}(\lambda)$, then \[Y=X_1+\hdots+X_n \sim \Gamma(n,\lambda),\] with density
-\[f_Y(y) = \frac{\lambda^2 y^{n-1} e^{-\lambda y}}{(n-1)!} .\]
+\[f_Y(y) = \frac{\lambda^n y^{n-1} e^{-\lambda y}}{(n-1)!} .\]
 This is also known as an \textbf{Erlang} distribution with parameters $n$ and $\lambda$.\\
 
 It follow from equation (\ref{GamConv}), with $x=1$ that
@@ -1850,11 +1754,10 @@ Rearranging terms shows that for $r,s>0$,
 Here $B(\cdot,\cdot)$ is known as the \textbf{beta function} with parameters $r,s$.  The \textbf{beta distribution} $Beta(r,s)$ has density
 \[b_{r,s}(x) = B(r,s)^{-1} \cdot x^{r-1}(1-x)^{s-1}, \hspace{20 pt} 0<x<1.\]
 The parameters $r,s$ play symmetric roles.  If $r=s$ then $Beta (r,s)$ is symmetric about $1/2$.  $Beta(r,r)$ is u-shaped if $r < 1$, uniform if $r=1$, and unimodal (bell shaped) if $r>1$.  If $r>s>0$ then $Beta(r,s)$ is skewed to the right, if $0<s<r$ then $Beta(r,s)$ is skewed left.  The random variable $X \sim Beta(r,s)$ has expection and variance
-\[EX = \frac{r}{r+s}, \hspace{20 pt} \mbox{Var}(X) = \frac{rs}{(r+s)^2(r+s+1)}.\] \\
+\[\mathbb{E}X = \frac{r}{r+s}, \hspace{20 pt} \mbox{Var}(X) = \frac{rs}{(r+s)^2(r+s+1)}.\] \\
 
-\noindent \emph{Chi-square distributions}\\
-
-\noindent Fix an integer $k \geq 1$.  Then, the chi-square distribution with $k$ degrees of freedom, written $\chi^2_k$, is $\Gamma(k/2,1/2)$.  Thus, $\chi^2_k$ has density
+\paragraph{Chi-square distributions}
+Fix an integer $k \geq 1$.  Then, the chi-square distribution with $k$ degrees of freedom, written $\chi^2_k$, is $\Gamma(k/2,1/2)$.  Thus, $\chi^2_k$ has density
 \[f_k(x) = \frac{1}{2^{k/2} \Gamma(\frac{k}{2})} x^{\frac{k}{2}-1}e^{-\frac{x}{2}} , \hspace{20 pt} x>0.\]
 
 \noindent \textbf{Theorem:} If $X_1,\hdots,X_k$ are iid $\mathbb{N}(0,1)$, then $X_1^2+\hdots+X_k^2 \sim \chi_k^2$.\\
@@ -1864,18 +1767,17 @@ The parameters $r,s$ play symmetric roles.  If $r=s$ then $Beta (r,s)$ is symmet
 
 \noindent If $Y=X_1^2+\hdots+X_k^2 \sim \chi_k^2$, then
 \begin{align}
-E Y= E(X_1^2+\hdots+X_k^2) = k EX_1^2 = k. \nonumber
+\mathbb{E}Y= \mathbb{E}(X_1^2+\hdots+X_k^2) = k \mathbb{E}X_1^2 = k. \nonumber
 \end{align}
 \begin{align}
-\mbox{Var}(Y) &= k \mbox{Var}(X_1^2) = k(E X_1^4-(EX_1^2)^2) \nonumber \\
+\mbox{Var}(Y) &= k \mbox{Var}(X_1^2) = k(\mathbb{E}X_1^4-(\mathbb{E}X_1^2)^2) \nonumber \\
 &= k(3-1) = 2k \nonumber.
 \end{align}
 
-\noindent \emph{F and t-distributions}\\
-
-\noindent The \textbf{F-distribution} with with m,n degrees of freedom, $F(m,n)$, is the distribution of the ratio
+\paragraph{F and t-distributions}
+The \textbf{F-distribution} with with m,n degrees of freedom, $F(m,n)$, is the distribution of the ratio
 \[\frac{X/m}{Y/n},\]
-where $X \sim \chi_m^2$, $Y \sim \chi_n^2$, and $X \coprod Y$. \\
+where $X \sim \chi_m^2$, $Y \sim \chi_n^2$, and $X \perp Y$. \\
 
 %\noindent \textbf{Fact:} If $X \sim f_x$ and $0 < Y \sim f_Y$ then $R = \frac{X}{Y}$.\\
 
@@ -1888,36 +1790,35 @@ The density of $F(m,n)$  is
 
 \noindent The \textbf{t-distribution} with $n$ degrees of freedom, $t_n$, is the distribution of the ratio
 \[\frac{X}{\sqrt{Y^2/n}},\]
-where $X,Y \sim \mathbb{N}(0,1)$ are independent.  Equivalently, $t_n$ is the distribution of $\sqrt{Z}$ where $Z \sim F(1,n)$. The density of $t_n$ is
+where $X\sim \mathbb{N}(0,1), Y^2 \sim \chi^2_n$ are independent.  Equivalently, $t_n$ is the distribution of $\sqrt{Z}$ where $Z \sim F(1,n)$. The density of $t_n$ is
 \[f_n(t) = \frac{1}{nB\left(\frac{1}{2},\frac{n}{2}\right)} \cdot \left(1+\frac{t^2}{n}\right)^{-(n+1)/2}. \]
 Some other properties of the t-distribution:
 \begin{enumerate}
 \item $t_1$ is the \textbf{Cauchy distribution}.
-\item If $X \sim t_n$ then $EX = 0$ for $n \geq 2$, undefined for $n=1$; $\mbox{Var}(X) = \frac{n}{n-2}$ for $n \geq 3$, undefined for $n=1,2$.
+\item If $X \sim t_n$ then $\mathbb{E}X = 0$ for $n \geq 2$, undefined for $n=1$; $\mbox{Var}(X) = \frac{n}{n-2}$ for $n \geq 3$, undefined for $n=1,2$.
 \item The density $f_n(t)$ converges to the density of a standard normal, $\phi(t)$, as $n \rightarrow \infty.$
 \end{enumerate}
 
 
 \subsection{Random Vectors: Expectation and Variance}
-A \textbf{random vector} is a vector $X = [X_1 \, X_2 \, ... X_k]'$ whose components $X_1, X_2,...,X_k$ are real-valued random variables defined on the same probability space.  The expectation of a random vector $E(X)$, if it exists, is given by the expected value of each component:
+A \textbf{random vector} is a vector $X = [X_1 \, X_2 \, ... X_k]'$ whose components $X_1, X_2,...,X_k$ are real-valued random variables defined on the same probability space.  The expectation of a random vector $\mathbb{E}(X)$, if it exists, is given by the expected value of each component:
 
-\[E(X) = [EX_1 \, EX_2 \, ... \, EX_k]'.\]
+\[\mathbb{E}(X) = [\mathbb{E}X_1 \, \mathbb{E}X_2 \, ... \, \mathbb{E}X_k]'.\]
 
 The covariance matrix of a random vector $Cov(X)$ is given by
 
-\[Cov(X) = E[(X-EX)(X-EX)']=E(XX')-EXEX'.\]
-
+\[Cov(X) = \mathbb{E}[(X- \mathbb{E}X)(X- \mathbb{E}X)']= \mathbb{E}(XX')- \mathbb{E}X \mathbb{E}X'.\]
 
 
 We now give some general results on expectations and variances. We supply
 reasonings for some of them, and you should verify the rest (usually
 by the method of entry-by-entry comparison). We assume in what follows
 that $k \times k$ $A$ and $k \times 1$ $a$ are constant, and we let
-$k \times 1$ $ \mu = E(X)$ and $k \times k$ $V = Cov(X)$ ($v_{ij} =
+$k \times 1$ $ \mu = \mathbb{E}(X)$ and $k \times k$ $V = Cov(X)$ ($v_{ij} =
 Cov(X_i, X_j)$):
 
 \begin{enumerate}
-\item $E(AX) = A E(X)$
+\item $\mathbb{E}(AX) = A \mathbb{E}(X)$
 
 \emph{Proof}: Exercise 7.5(a).
 
@@ -1931,22 +1832,22 @@ Cov(X_i, X_j)$):
 
 \emph{Proof} Exercise 7.5(b).
 
-\item $E(X'AX) = tr(AV) + \mu' A \mu$
+\item $\mathbb{E}(X'AX) = tr(AV) + \mu' A \mu$
 
 \emph{Proof}: Let $A_i$ be the $i$th row of A and $a_{ij}$ be the $ij$th entry of A. \\
 Note that 
-$tr(AV)=tr(A(E(XX')-EXEX'))=tr(AE(XX'))-tr(AEXEX'). $
+$tr(AV)=tr(A(\mathbb{E}(XX')-\mathbb{E}X \mathbb{E}X'))=tr(A\mathbb{E}(XX'))-tr(A\mathbb{E}X \mathbb{E}X'). $
 \begin{eqnarray*}
-tr(AE(XX'))&=& tr\left(\begin{pmatrix} A_1E(XX')\\ \vdots \\ A_kE(XX')  \end{pmatrix}  \right)\\
-	&=& \sum_{i=1}^k\sum_{j=1}^k a_{ij}E(X_jX_i)\\
-	&=&E\left(\sum_{i=1}^k\sum_{j=1}^k a_{ij}X_jX_i \right)\\
-	&=&E\left(\sum_{i=1}^k A_iXX_i\right)\\
-	&=&E\left(\left(\sum_{i=1}^k X_iA_i\right)X\right)\\
-	&=&E(X'AX) 
+tr(A\mathbb{E}(XX'))&=& tr\left(\begin{pmatrix} A_1 \mathbb{E}(XX')\\ \vdots \\ A_k \mathbb{E}(XX')  \end{pmatrix}  \right)\\
+	&=& \sum_{i=1}^k\sum_{j=1}^k a_{ij} \mathbb{E}(X_jX_i)\\
+	&=&\mathbb{E}\left(\sum_{i=1}^k\sum_{j=1}^k a_{ij}X_jX_i \right)\\
+	&=&\mathbb{E}\left(\sum_{i=1}^k A_iXX_i\right)\\
+	&=&\mathbb{E}\left(\left(\sum_{i=1}^k X_iA_i\right)X\right)\\
+	&=&\mathbb{E}(X'AX) 
 \end{eqnarray*}
 Meanwhile, 
-$$tr(AEXEX')=tr(EX'AEX)=EX'AEX=\mu' A\mu. $$
-So we have $E(X'AX) = tr(AV) + \mu' A \mu. \hspace{10 pt} \Box$
+$$tr(A\mathbb{E}X\mathbb{E}X')=tr(\mathbb{E}X'A\mathbb{E}X)=\mathbb{E}X'A \mathbb{E}X=\mu' A\mu. $$
+So we have $\mathbb{E}(X'AX) = tr(AV) + \mu' A \mu. \hspace{10 pt} \Box$
 
 
 \item Covariance matrix $V$ is positive semi-definite.
@@ -2012,26 +1913,9 @@ Prove the following results about vector expectations and variance:
 
 
 \subsection{Bivariate Normal Distribution}
-Suppose $X$ is a vector of continuous random variables and $Y = AX +
-c$, where $A$ is an invertible matrix and $c$ is a constant vector. If $X$ has probability
-density function $f_X$, then the probability density function of $Y$
-is given by $$f_Y(y) = |det(A)|^{-1} f_X(A^{-1}(Y-c)).$$ The proof of
-this result can be found in appendix B.2.1 of Bickel and Doksum.
+Suppose $X$ is a vector of continuous random variables and $Y = AX + c$, where $A$ is an invertible matrix and $c$ is a constant vector. If $X$ has probability density function $f_X$, then the probability density function of $Y$ is given by $$f_Y(y) = |det(A)|^{-1} f_X(A^{-1}(Y-c)).$$ The proof of this result can be found in appendix B.2.1 of Bickel and Doksum.
 
-We say that $2 \times 1$ vector $X = \left[ \begin{array} {c} X_1 \\ X_2
-  \end{array} \right]$ has a \textbf{bivariate normal} distribution if
-$\exists$ $Z_1, Z_2$ I.I.D $N(0, 1)$, s.t. $X = AZ + \mu$. In what
-follows we will moreover assume that $A$ is invertible. You should
-check at this point for yourself that $X_1 \sim N(\mu_1, \sigma_1)$
-and $X_2 \sim N(\mu_2, \sigma_2)$, where $\sigma_1 = \sqrt{{a_{11}}^2 +
-  {a_{12}}^2}$ and $\sigma_2 = \sqrt{{a_{21}}^2 + {a_{22}}^2}$, and
-that $Cov(X_1, X_2) = a_{11}a_{21} + a_{12} + a_{22}$. We
-then say that $X \sim N(\mu, \Sigma)$, where $$\Sigma = AA' =
-\left[ \begin{array} {l r} \sigma_1^2 & \rho \sigma_1 \sigma_2 \\ \rho
-    \sigma_1 \sigma_2 & \sigma_2^2 \end{array} \right]$$ and $\rho =
-\frac{Cov(X_1, X_2)}{\sigma_1 \sigma_2}$ (you should verify that the
-entries of $\Sigma = AA'$ are as we claim). The meaning behind this
-definition is made explicit by the following theorem:\\
+We say that $2 \times 1$ vector $X = \left[ \begin{array} {c} X_1 \\ X_2 \end{array} \right]$ has a \textbf{bivariate normal} distribution if $\exists$ $Z_1, Z_2$ I.I.D $N(0, 1)$, s.t. $X = AZ + \mu$. In what follows we will moreover assume that $A$ is invertible. You should check at this point for yourself that $X_1 \sim N(\mu_1, \sigma_1^2)$ and $X_2 \sim N(\mu_2, \sigma_2^2)$, where $\sigma_1 = \sqrt{{a_{11}}^2 + {a_{12}}^2}$ and $\sigma_2 = \sqrt{{a_{21}}^2 + {a_{22}}^2}$, and that $Cov(X_1, X_2) = a_{11}a_{21} + a_{12} a_{22}$. We then say that $X \sim N(\mu, \Sigma)$, where $$\Sigma = AA' = \left[ \begin{array} {l r} \sigma_1^2 & \rho \sigma_1 \sigma_2 \\ \rho \sigma_1 \sigma_2 & \sigma_2^2 \end{array} \right]$$ and $\rho = \frac{Cov(X_1, X_2)}{\sigma_1 \sigma_2}$ (you should verify that the entries of $\Sigma = AA'$ are as we claim). The meaning behind this definition is made explicit by the following theorem:\\
 
 \textbf{Theorem}: Suppose $\sigma_1 \neq 0 \neq \sigma_2$ and $|\rho|<
 1$. Then \\
@@ -2041,12 +1925,7 @@ $f_X (x) = \frac{1}{2 \pi \sqrt{det(\Sigma)}}$ $\exp \left\{-
 \end{center}
 
 \textbf{Proof}
-Note first of all that if $A$ is invertible, then it follows directly
-that $\sigma_1 \neq 0 \neq \sigma_2$ and $|\rho| < 1$ (why?). Also,
-$$\sqrt{det(\Sigma}) = \sqrt{det(AA')} = \sqrt{det(A) ^2} = |det(A)| =
-\sigma_1 \sigma_2 \sqrt{1 - \rho^2}$$ (you should verify the last
-step). We know that $f_Z(z) = \frac{1}{2 \pi} \exp \left( - \frac{1}{2}
-  z'z \right)$ and since $X = AZ + \mu$ we have by the result above:
+Note first of all that if $A$ is invertible, then it follows directly that $\sigma_1 \neq 0 \neq \sigma_2$ and $|\rho| < 1$ (why?). Also, $$\sqrt{det(\Sigma}) = \sqrt{det(AA')} = \sqrt{det(A)^2} = |det(A)| = \sigma_1 \sigma_2 \sqrt{1 - \rho^2}$$ (you should verify the last step). We know that $f_Z(z) = \frac{1}{2 \pi} \exp \left( - \frac{1}{2} z'z \right)$ and since $X = AZ + \mu$ we have by the result above:
 \begin{align*}
 f_X(x) &= \frac{1}{2 \pi |det(A)|} \exp \left( - \frac{1}{2} (A^{-1}(x -
     \mu))'(A^{-1}(x- \mu)) \right) \\
@@ -2057,59 +1936,25 @@ f_X(x) &= \frac{1}{2 \pi |det(A)|} \exp \left( - \frac{1}{2} (A^{-1}(x -
  &= \frac{1}{2 \pi \sqrt{det(\Sigma})} \exp
     \left( - \frac{1}{2} (x - \mu)'\Sigma^{-1}(x- \mu) \right)
 \end{align*}
-which proves the theorem. The symmetric matrix $\Sigma$ is the
-covariance matrix of $X$. $\Box$ \\
+which proves the theorem. The symmetric matrix $\Sigma$ is the covariance matrix of $X$. $\Box$ \\
 
-You should prove for yourself (Exercise 8.1) that if $X$ has a bivariate normal
-distribution $N(\mu, V$, and $B$ is invertible, then $Y = BX + d$ has
-a bivariate normal distribution $N(B\mu + d, BVB')$.
+You should prove for yourself (Exercise 8.1) that if $X$ has a bivariate normal distribution $N(\mu, V$), and $B$ is invertible, then $Y = BX + d$ has a bivariate normal distribution $N(B\mu + d, BVB')$.
 
 
-These results generalize to more than two variables and lead to
-multivariate normal distributions. You can familiarize yourself
-with some of the extensions in appendix B.6 of Bickel and Doksum. In
-particular,we note here that  if $x$ is a $k \times 1$ vector of IID
-$N(0, \sigma^2)$ random variables, then $Ax$ is distributed as a
-multivariate $N(0, \sigma^2 AA')$ random vector.
+These results generalize to more than two variables and lead to multivariate normal distributions. You can familiarize yourself with some of the extensions in appendix B.6 of Bickel and Doksum. In particular,we note here that  if $x$ is a $k \times 1$ vector of IID $N(0, \sigma^2)$ random variables, then $Ax$ is distributed as a multivariate $N(0, \sigma^2 AA')$ random vector.
 
 \subsection{F-test}
 
 We will need a couple more results about quadratic forms:
 \begin{enumerate}
-\item Suppose $k \times k$ $A$ is symmetric and idempotent and $k
-  \times 1$ $x \sim N(0_{k\times 1}, \sigma^2 I_{k \times k})$. Then
-  $\frac{x'Ax}{\sigma^2} \sim {\chi_r}^2$, where $r = rank(A)$.
+\item Suppose $k \times k$ $A$ is symmetric and idempotent and $k \times 1$ $x \sim N(0_{k\times 1}, \sigma^2 I_{k \times k})$. Then $\frac{x'Ax}{\sigma^2} \sim {\chi_r}^2$, where $r = rank(A)$.
 
-\emph{Proof}: We write
-  $\frac{x'Ax}{\sigma^2} = \frac{x'Q}{\sigma} \Lambda
-  \frac{Q'x}{\sigma}$ and we note that $\frac{Q'x}{\sigma} \sim N(0,
-  \frac{1}{\sigma^2} \times \sigma^2 Q'Q) = N(0, I)$,
-  i.e.$\frac{Q'x}{\sigma}$ is a vector of IID $N(0,1)$ random
-  variables. We also know that the $\Lambda$ is diagonal and its main
-  diagonal consist of $r$ 1's and $k-r$ 0's, where $r = rank(A)$. You
-  can then easily see from matrix multiplication  that
-  $\frac{x'Q}{\sigma} \Lambda \frac{Q'x}{\sigma} = {z_1}^2 + {z_2}^2 +
-  \ldots + {z_r}^2$, where the $z_i$'s are IID $N(0,1)$. Therefore
-  $\frac{x'Ax}{\sigma^2} \sim {\chi_r}^2$. $\Box$
+\emph{Proof}: We write $\frac{x'Ax}{\sigma^2} = \frac{x'Q}{\sigma} \Lambda \frac{Q'x}{\sigma}$ and we note that $\frac{Q'x}{\sigma} \sim N(0, \frac{1}{\sigma^2} \times \sigma^2 Q'Q) = N(0, I)$, i.e.$\frac{Q'x}{\sigma}$ is a vector of IID $N(0,1)$ random variables. We also know that the $\Lambda$ is diagonal and its main diagonal consist of $r$ 1's and $k-r$ 0's, where $r = rank(A)$. You can then easily see from matrix multiplication that $\frac{x'Q}{\sigma} \Lambda \frac{Q'x}{\sigma} = {z_1}^2 + {z_2}^2 + \ldots + {z_r}^2$, where the $z_i$'s are IID $N(0,1)$. Therefore $\frac{x'Ax}{\sigma^2} \sim {\chi_r}^2$. $\Box$
 
 \item The above result generalizes further: suppose $k \times1$ $x
-  \sim N(0, V)$, and $k \times k$ symmetric $A$ is s.t. $V$ is
-  positive definite and either $AV$ or $VA$ is
-  idempotent. Then $x'Ax \sim {\chi_r}^2$, where $r =
-  rank(AV)$ or $rank(VA)$, respectively.
+  \sim N(0, V)$, and $k \times k$ symmetric $A$ is s.t. $V$ is positive definite and either $AV$ or $VA$ is idempotent. Then $x'Ax \sim {\chi_r}^2$, where $r = rank(AV)$ or $rank(VA)$, respectively.
 
-\emph{Proof}: We will prove it for the case
-  of idempotent $AV$ and the proof for idempotent $VA$ is essentially
-  the same. We know that $x \sim V^{1/2}z$, where $z \sim N(0, I_{k
-  \times k})$, and we know that $V^{1/2} = (V^{1/2})'$, so we have:
-  $x'Ax = z'(V^{1/2})' A V^{1/2} z = z' V^{1/2} A V^{1/2} z$. Consider
-  $B = V^{1/2} A V^{1/2}$. $B$ is symmetric, and $B^2 = V^{1/2} A
-  V^{1/2} V^{1/2} A V^{1/2} = V^{1/2} A V A V V^{-1/2} = V^{1/2} A V
-  V^{-1/2} = V^{1/2} A V^{1/2} = B$, so $B$ is also idempotent. Then
-  from the previous result (with $\sigma = 1$), we have $z'Bz \sim
-  {\chi_r}^2$, and therefore $x'Ax \sim {\chi_r}^2$, where $r =
-  rank(B) = rank (V^{1/2} A V^{1/2})$. It is a good exercise (Exercise 8.2) to
-  show that $rank(B) = rank (AV)$. $\Box$
+\emph{Proof}: We will prove it for the case of idempotent $AV$ and the proof for idempotent $VA$ is essentially the same. We know that $x \sim V^{1/2}z$, where $z \sim N(0, I_{k \times k})$, and we know that $V^{1/2} = (V^{1/2})'$, so we have: $x'Ax = z'(V^{1/2})' A V^{1/2} z = z' V^{1/2} A V^{1/2} z$. Consider $B = V^{1/2} A V^{1/2}$. $B$ is symmetric, and $B^2 = V^{1/2} A V^{1/2} V^{1/2} A V^{1/2} = V^{1/2} A V A V V^{-1/2} = V^{1/2} A V V^{-1/2} = V^{1/2} A V^{1/2} = B$, so $B$ is also idempotent. Then from the previous result (with $\sigma = 1$), we have $z'Bz \sim {\chi_r}^2$, and therefore $x'Ax \sim {\chi_r}^2$, where $r  rank(B) = rank (V^{1/2} A V^{1/2})$. It is a good exercise (Exercise 8.2) to show that $rank(B) = rank (AV)$. $\Box$
 
 \item Let $U = x'Ax$ and $V = x'Bx$. Then the two quadratic forms are
   independent (in the probabilistic sense of the word) if $AVB =
@@ -2153,18 +1998,15 @@ some very useful distributional results:
 \item $\frac{\|e\|^2}{\sigma^2} \sim {\chi^2}_{n-p}$.
 
 \emph{Proof}: First
-  notice that $e = (I - H)Y = (I - H)(X \beta + \epsilon) =
-  (I-H)\epsilon$ (why?). Now, $\frac{\|e\|^2}{\sigma^2} =
-  \frac{e'e}{\sigma^2} = \frac{\epsilon' (I-H)'(I-H)
-  \epsilon}{\sigma^2} = \frac{\epsilon' (I-H)
-  \epsilon}{\sigma^2}$. Since $(I-H)$ is symmetric and idempotent, and
-  $\epsilon \sim N(0, \sigma^2)$, by one of the above results we have
-  $\frac{\epsilon' (I-H) \epsilon}{\sigma^2} \sim {\chi_r}^2$, where
-  $r = rank(I-H)$. But we know (why?) that $rank(I-H) = tr(I-H) = tr(I
-  - X(X'X)^{-1}X') = tr(I) - tr(X(X'X)^{-1}X') = n - tr(X'X(X'X)^{-1})
-  = n - tr(I_{p \times p}) = n - p$. So we have
-  $\frac{\|e\|^2}{\sigma^2} \sim {\chi^2}_{n-p}$, and in particular
-  $E(\frac{\|e\|^2}{n-p}) = \sigma^2$.  $\Box$
+  notice that $e = (I - H)Y = (I - H)(X \beta + \epsilon) = (I-H)\epsilon$ (why?). Now, 
+  $$\frac{\|e\|^2}{\sigma^2} = \frac{e'e}{\sigma^2} = \frac{\epsilon' (I-H)'(I-H)\epsilon}{\sigma^2} = \frac{\epsilon' (I-H)\epsilon}{\sigma^2}$$
+  
+  Since $(I-H)$ is symmetric and idempotent, and $\epsilon \sim N(0, \sigma^2 I)$, by one of the above results we have $\frac{\epsilon' (I-H) \epsilon}{\sigma^2} \sim {\chi_r}^2$, where $r = \text{rank}(I-H)$. But we know (why?) that 
+   $$\begin{aligned} \text{rank}(I-H) &= \text{tr}(I-H) = \text{tr}(I - X(X'X)^{-1}X')\\ 
+  &= \text{tr}(I) - \text{tr}(X(X'X)^{-1}X') = n - \text{tr}(X'X(X'X)^{-1})\\
+  &= n - tr(I_{p \times p}) = n - p \end{aligned}$$ 
+  
+  So we have $\frac{\|e\|^2}{\sigma^2} \sim {\chi^2}_{n-p}$, and in particular $E(\frac{\|e\|^2}{n-p}) = \sigma^2$.  $\Box$
 \end{enumerate}
 
 Before we introduce the F-test, we are going to establish one fact
